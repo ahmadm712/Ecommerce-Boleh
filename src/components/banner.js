@@ -53,6 +53,7 @@ export default function BannerComponent(props) {
         {products.map((res) => {
           return (
             <div>
+            <h1>{res.productName}</h1>
               <img
                 src={res.image}
                 alt=""
