@@ -1,9 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// import ProductCard from "./product_card";
-import dataProduct from "../data/dummy-data";
-import { Link, useHistory } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 
 export default function CarouselComponent() {

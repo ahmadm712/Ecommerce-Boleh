@@ -1,4 +1,6 @@
 import React from "react";
+import { Link} from "react-router-dom";
+
 
 export default function Footer() {
   return (
@@ -9,12 +11,12 @@ export default function Footer() {
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6">
                 <div>
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                   >
                     OLEH OLEH
-                  </a>
+                  </Link>
                 </div>
 
                 <p className="max-w-md mt-2 text-black dark:text-gray-400">
@@ -33,24 +35,24 @@ export default function Footer() {
                   <h3 className="text-gray-800 uppercase dark:text-white">
                     Fitur Kami
                   </h3>
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="block mt-2 text-sm text-gray-800 dark:text-gray-400 hover:underline"
                   >
                     Mega cloud
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="#"
                     className="block mt-2 text-sm text-gray-800 dark:text-gray-400 hover:underline"
                   >
                     Aperion UI
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="#"
                     className="block mt-2 text-sm text-gray-800 dark:text-gray-400 hover:underline"
                   >
                     Meraki UI
-                  </a>
+                  </Link>
                 </div>
 
                 <div>

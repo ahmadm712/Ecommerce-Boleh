@@ -1,8 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// import ProductCard from "./product_card";
-import dataProduct from "../data/dummy-data";
+
 
 export default function BannerComponent(props) {
   const responsive = {
