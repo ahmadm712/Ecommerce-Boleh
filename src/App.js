@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route,Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/404Page";
 import LoginPage from "./pages/Login_page";
@@ -18,7 +18,6 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-
         <Route path="/login">
           <LoginPage />
         </Route>
@@ -37,8 +36,6 @@ function App() {
         <Route path="/history_transaction">
           <HistoryTransactionPage />
         </Route>
-        
-
         <Route path="/checkout">
           <CheckOutPage />
         </Route>
@@ -50,7 +47,6 @@ function App() {
         </Route>
       </Switch>
     </Router>
-
   );
 }
 
