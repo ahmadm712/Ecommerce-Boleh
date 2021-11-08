@@ -24,7 +24,7 @@ function CheckOutPage() {
   ];
 
   return (
-    <>
+    <div className='h-full w-full'>
       <Navbar />
       <div className="container mx-auto">
         <h1 className="font-bold">Checkout</h1>
@@ -71,6 +71,7 @@ function CheckOutPage() {
           {/* SideBox */}
           <div className="box-content h-full w-1/4 p-3 border-2">
             <h1 className="font-semibold text-lg">Rincian Pembayaran</h1>
+            <br />
 
             <div>
               <h1 className="font-semibold text-lg">Total Belanja</h1>
@@ -100,6 +101,8 @@ function CheckOutPage() {
               </div>
               <br />
             </div>
+
+
             <div>
               <h1 className="font-semibold text-lg">Metode Pembayaran</h1>
               <div className="box-content h-full w-full border-2 flex justify-between">
@@ -121,6 +124,7 @@ function CheckOutPage() {
                 </div>
               </div>
             </div>
+            <br />
 
             <button className="button-xl bg-yellow-600 hover:bg-yellow-700 rounded-md text-white w-full h-10 max-w-xl mt-3">
               Bayar
@@ -129,7 +133,7 @@ function CheckOutPage() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
