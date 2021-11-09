@@ -1,6 +1,5 @@
 import React from "react";
-import { Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -54,7 +53,6 @@ export default function Footer() {
                     Meraki UI
                   </Link>
                 </div>
-
                 <div>
                   <h3 className="text-gray-700 uppercase dark:text-white">
                     Kontak
