@@ -17,7 +17,7 @@ function LoginPage() {
       <div className="max-w-xl w-full mx-auto">
         
        </div>
-          <div className="max-w-lg w-full mx-auto mt-4 bg-white p-8 border border-gray-300 shadow-xl">
+          <div className="max-w-xl w-96 mx-auto mt-4 bg-white p-8 border border-gray-300 shadow-xl rounded-xl">
        
           <form action="" className="space-y-6">
 
@@ -65,7 +65,7 @@ function LoginPage() {
                 </a>
             </div>
             
-            <div className="text-center gap-2">
+            <div className="text-center flex justify-evenly">
                 <p
                   className="inline-block text-sm text-black-500 align-baseline"
                   >
