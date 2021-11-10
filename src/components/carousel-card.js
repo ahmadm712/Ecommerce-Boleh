@@ -26,10 +26,13 @@ export default function CarouselComponent() {
   };
 
   return (
+
+    
+
     <div className='px-24'>
       <h1 className="text-2xl">Produk A</h1>
       <Carousel responsive={responsive}>
-        <div className='mr-4'>
+        <div className='mr-4 ' >
         <Link to='/detail_produk'>
         <div>
             <img src="https://mdbootstrap.com/img/new/slides/052.jpg" alt="" />
