@@ -1,9 +1,8 @@
 import React from "react";
-import { useHistory } from 'react-router-dom'
-
+import { useHistory } from "react-router-dom";
 
 function LoginPage() {
-    const history = useHistory()
+  const history = useHistory();
   const handleNext = () => {
     history.push("/register");
   };

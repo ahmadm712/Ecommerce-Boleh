@@ -1,10 +1,11 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export default function CarouselComponent() {
+  const [data, setdata] = useState([]);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -25,56 +26,44 @@ export default function CarouselComponent() {
     },
   };
 
+  const getProduk = async () => {
+    try {
+      const res = await axios.get(
+        "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
+      );
+      // console.log(res.data.product);
+      const p = await res.data.product;
+      // const jsonP = p.json()
+      // console.log(jsonP)
+      setdata(p);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProduk();
+  }, []);
+
   return (
-    <div className='px-24'>
-      <h1 className="text-2xl">Produk A</h1>
-      <Carousel responsive={responsive}>
-        <div className='mr-4'>
-        <Link to='/detail_produk'>
-        <div>
-            <img src="https://mdbootstrap.com/img/new/slides/052.jpg" alt="" />
-            <h2>Jawa Barat</h2>
+    <Carousel responsive={responsive} itemClass="image-item">
+      {data.map((res) => {
+        return (
+          <div className="w-4/6 h-55">
+            <Link to="/detail_produk">
+              <img
+                src={res.product_image}
+                alt=""
+                className="w-full rounded-md h-full"
+              />
+              <h2 className='text-lg font-semibold'>{res.product_name}</h2>
 
-            <h2>Seblak</h2>
-            <h2>Rp 15.000</h2>
+              <h2 className='font-light text-green-800'>{res.product_origin_category}</h2>
+              <h2 className='font-normal text-yellow-800'>Rp {res.product_price}</h2>
+            </Link>
           </div>
-        </Link>
-          
-        </div>
-        <div className='mr-4'>
-        <Link to='/detail_produk'>
-        <div>
-            <img src="https://mdbootstrap.com/img/new/slides/052.jpg" alt="" />
-            <h2>Jawa Barat</h2>
-
-            <h2>Seblak</h2>
-            <h2>Rp 15.000</h2>
-          </div>
-        </Link>
-        </div>
-        <div className='mr-4'>
-        <Link to='/detail_produk'>
-        <div>
-            <img src="https://mdbootstrap.com/img/new/slides/052.jpg" alt="" />
-            <h2>Jawa Barat</h2>
-
-            <h2>Seblak</h2>
-            <h2>Rp 15.000</h2>
-          </div>
-        </Link>
-        </div>
-        <div className='mr-4'>
-        <Link to='/detail_produk'>
-        <div>
-            <img src="https://mdbootstrap.com/img/new/slides/052.jpg" alt="" />
-            <h2>Jawa Barat</h2>
-
-            <h2>Seblak</h2>
-            <h2>Rp 15.000</h2>
-          </div>
-        </Link>
-        </div>
-      </Carousel>
-    </div>
+        );
+      })}
+    </Carousel>
   );
 }
