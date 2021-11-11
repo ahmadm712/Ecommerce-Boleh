@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom'
-import Logo from "../assets/images/logo2.png";
-
+import Logo from "../assets/images/Sale.png";
+import Logo2 from "../assets/images/logo2.png";
 
 
 function LoginPage() {
@@ -9,9 +9,9 @@ function LoginPage() {
 
 
   return (
-    <div className="flex justify-between px-56 py-24 bg-primary-100">
+    <div className="flex items-stretch justify-center px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
       <div>
-      <img className="max-w-md w-3/4 mx-auto mt-4" src={Logo} alt="Logo"/>
+      <img className="max-w-2xl max-w-7xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
       </div>
     <div className="min-h-screen bg-white-100 flex flex-col">
       <div className="max-w-xl w-full mx-auto">
@@ -22,7 +22,7 @@ function LoginPage() {
           <form action="" className="space-y-6">
 
           <div class="h-14 w-14 mx-auto">
-          <img src={Logo} alt="Logo"/>
+          <img src={Logo2} alt="Logo"/>
           </div>
 
         <div className="text-3xl font-bold text-gray-900 mt-2 text-center">Login</div>
@@ -71,10 +71,11 @@ function LoginPage() {
                   >
                   No have an account? 
                   </p>
+                 
                   
                 <a
                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                  href="./register.html"
+                  href="./register"
                   >
                    Register
                   </a>

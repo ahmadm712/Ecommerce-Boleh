@@ -13,7 +13,7 @@ export default function DetailProduct() {
     <div className="lg:w-4/5 mx-auto ">
       <img alt="ecommerce" className="lg:w-3/4 w-full object-cover object-center rounded border border-gray-400" src="https://i.ibb.co/1JjtWrF/strudel.jpg"/>
       </div>
-    
+        
         
       <div className="lg:w-1/2 w-full p-7 mt-6 lg:mt-0 border border-gray-400">
         <h2 className="text-sm title-font text-gray-500 tracking-widest">Makanan</h2>
