@@ -15,15 +15,15 @@ export default function RegisterPage() {
 // const [phone, setphone] = useState('');
 
     return ( 
-    	<div className="flex items-stretch justify-center px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
+    	<div className="flex items-stretch justify-center px-54 py-12 bg-gradient-to-r from-primary-100 to-gray-50">
       <div>
-      <img className="max-w-2xl max-w-7xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
+      <img className="max-w-7xl max-h-7xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
       </div>
     <div className="min-h-screen bg-white-100 flex flex-col">
       <div className="max-w-xl w-full mx-auto">
         
        </div>
-          <div className="max-w-xl w-96 mx-auto mt-4 bg-white p-8 border border-gray-300 shadow-xl rounded-xl">
+          <div className="max-w-xl w-96 h-auto mx-auto mt-4 bg-white p-8 border border-gray-300 shadow-xl rounded-xl">
        
           <form action="" className="space-y-6">
 
@@ -38,7 +38,7 @@ export default function RegisterPage() {
               <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1"/>
             </div>
             
-            <div>
+            <div className="">
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Email</label>
               <input type="email" className="w-full p-2 border border-gray-300 rounded mt-1"/>
             </div>
@@ -65,7 +65,7 @@ export default function RegisterPage() {
 
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Address</label>
-              <input type="text" className="w-full h-10 p-2 border border-gray-300 rounded mt-1"/>
+              <textarea type="text" className="w-full h-10 p-2 border border-gray-300 rounded mt-1 form-textarea"/>
             </div>
             
 
@@ -89,7 +89,7 @@ export default function RegisterPage() {
                   
                 <a
                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                  href="./register"
+                  href="./login"
                   >
                    Login
                   </a>
