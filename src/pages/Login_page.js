@@ -1,15 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom'
 import Logo from "../assets/images/Sale.png";
 import Logo2 from "../assets/images/logo2.png";
 
 
 function LoginPage() {
-    const [name, setName] = useState('Login');
+    const [email, setEmail] = useState('Login');
+    const [password, setPassword] = useState('Login');
+    const history = useHistory();
 
+    useEffect(() => {
+      if (localStorage.getItem('user-info')) {
+          history.push("/add")
+      }
+    }, [])
+
+    async function login() {
+
+      console.warn(email,password) 
+      let item={email, password};
+      let result= await fetch("https://oleh-oleh-skilvul.000webhostapp.com/api/user",{
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body:JSON.stringify(item)
+
+      });
+
+      result = await result.json();
+      localStorage.setItem("user-info", JSON.stringify(result))
+      history.push("/add")
+
+
+
+
+    }
 
   return (
-    <div className="flex items-stretch justify-center px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
+    <div className="min-h-screen flex justify-around px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
       <div>
       <img className="max-w-2xl max-w-7xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
       </div>
@@ -29,12 +59,16 @@ function LoginPage() {
             
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Email</label>
-              <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1"/>
+              <input id="email-address" name="email" type="text" 
+              onChange={(e)=>setEmail(e.target.value)} 
+              className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Email address" required/>
             </div>
             
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Password</label>
-              <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1"/>
+              <input id="password" name="password" type="password" 
+              onChange={(e)=>setPassword(e.target.value)} 
+              className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Password" required/>
             </div>
             
 
@@ -48,7 +82,7 @@ function LoginPage() {
             
 
             <div class="mb-6 text-center">
-               <button
+               <button onClick={login}
                  className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                  type="button"
                   >

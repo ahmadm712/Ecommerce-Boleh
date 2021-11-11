@@ -15,10 +15,14 @@ export default function RegisterPage() {
 // const [phone, setphone] = useState('');
 
     return ( 
-    	<div className="flex items-stretch justify-center px-54 py-12 bg-gradient-to-r from-primary-100 to-gray-50">
-      <div>
+    	<div className="min-h-screen flex justify-around px-54 py-12 bg-gradient-to-r from-primary-100 to-gray-50">
+      
+      
+      <div className="max-w-7xl h-full flex justify-center">
       <img className="max-w-7xl max-h-7xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
       </div>
+
+
     <div className="min-h-screen bg-white-100 flex flex-col">
       <div className="max-w-xl w-full mx-auto">
         
@@ -35,37 +39,41 @@ export default function RegisterPage() {
             
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Full Name</label>
-              <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1"/>
+              <input id="full-name" name="fullname" type="text" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Full name" required/>
             </div>
             
             <div className="">
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Email</label>
-              <input type="email" className="w-full p-2 border border-gray-300 rounded mt-1"/>
+              <input id="email-address" name="email" type="email" type="email" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Email address" required/>
             </div>
 
-            <div>
-              <label htmlFor="" className="text-sm font-bold text-gray-600 block">Image</label>
-              <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1"/>
-            </div>
-
-            <div>
-              <label htmlFor="" className="text-sm font-bold text-gray-600 block">Phone Number</label>
-              <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1"/>
-            </div>
 
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Password</label>
-              <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1"/>
+              <input id="password" name="password" type="email" type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Password" required/>
             </div>
 
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Confirm Password</label>
-              <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1"/>
+              <input id="confirm-password" name="confirmpassword" type="password" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Confirm Password" required/>
+            </div>
+
+
+            <div>
+              <label htmlFor="" className="text-sm font-bold text-gray-600 block">Image</label>
+              <input id="image" name="image" type="text" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Input your image link" required/>
             </div>
 
             <div>
+              <label htmlFor="" className="text-sm font-bold text-gray-600 block">Phone Number</label>
+              <input id="phone-number" name="phone-number" type="text" className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Phone number" required/>
+            </div>
+
+           
+
+            <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Address</label>
-              <textarea type="text" className="w-full h-10 p-2 border border-gray-300 rounded mt-1 form-textarea"/>
+              <textarea id="address" name="address" type="text" className="w-full h-28  p-2 border border-gray-300 rounded mt-1 form-textarea" placeholder="Your Address" required/>
             </div>
             
 
