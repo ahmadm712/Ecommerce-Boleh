@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
+
 import { useHistory } from 'react-router-dom'
 import Logo from "../assets/images/Sale.png";
 import Logo2 from "../assets/images/logo2.png";
@@ -17,7 +19,7 @@ function LoginPage() {
 
     async function login() {
 
-      console.warn(email,password) 
+      console.log(email,password) 
       let item={email, password};
       let result= await fetch("https://oleh-oleh-skilvul.000webhostapp.com/api/user",{
         method:"POST",
@@ -31,7 +33,7 @@ function LoginPage() {
 
       result = await result.json();
       localStorage.setItem("user-info", JSON.stringify(result))
-      history.push("/add")
+      history.push("/")
 
 
 
@@ -107,12 +109,12 @@ function LoginPage() {
                   </p>
                  
                   
-                <a
+                <Link
                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                  href="./register"
+                  to="/register"
                   >
                    Register
-                  </a>
+                  </Link>
               </div>
             
 
