@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Logo from "../assets/images/Sale.png";
+import Logo from "../assets/images/Shopping.png";
 import Logo2 from "../assets/images/logo2.png";
 
 export default function RegisterPage() {
@@ -15,11 +15,11 @@ export default function RegisterPage() {
 // const [phone, setphone] = useState('');
 
     return ( 
-    	<div className="min-h-screen flex justify-around px-54 py-12 bg-gradient-to-r from-primary-100 to-gray-50">
+    	<div className="min-h-screen flex justify-around px-54 py-12 bg-gradient-to-r from-primary-100 to-yellow-50">
       
       
       <div className="max-w-7xl h-full flex justify-center">
-      <img className="max-w-7xl max-h-7xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
+      <img className="max-w-3xl mx-auto  mt-4 flex spa" src={Logo} alt="Logo"/>
       </div>
 
 
