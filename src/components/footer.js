@@ -61,7 +61,7 @@ export default function Footer() {
                     +1 526 654 8965
                   </span>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                    example@email.com
+                    example
                   </span>
                 </div>
               </div>

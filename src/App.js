@@ -30,8 +30,8 @@ function App() {
         <Route path="/wishlist">
           <WishlistPage />
         </Route>
-        <Route path="/detail_produk">
-          <DetailProductPage />
+        <Route path="/detail_produk/:id" component={DetailProductPage}>
+          {/* <DetailProductPage /> */}
         </Route>
         <Route path="/history_transaction">
           <HistoryTransactionPage />

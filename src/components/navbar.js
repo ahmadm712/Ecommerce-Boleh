@@ -1,5 +1,5 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo2.png";
 
 export default function Navbar() {
@@ -15,8 +15,8 @@ export default function Navbar() {
             <div class="flex space-x-7">
               <div>
                 <Link to="/" class="flex items-center py-4 px-2">
-                  <img src={Logo} alt="Logo" class="h-8 w-8" />
-                  <span class="font-semibold text-white text-sm">OLEH</span>
+                  <img src={Logo} alt="Logo" class="h-8 w-h-8" />
+                  <span class="font-semibold text-white text-lg">OLEH</span>
                 </Link>
               </div>
             </div>
