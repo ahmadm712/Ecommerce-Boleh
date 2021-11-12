@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams, Redirect, useHistory } from "react-router-dom";
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
@@ -26,6 +28,12 @@ export default function CarouselComponent() {
     },
   };
 
+  const history = useHistory();
+
+  const handleKlik = (id) => {
+    // history.pushState(`detail_produk/${id}`);
+  };
+
   const getProduk = async () => {
     try {
       const res = await axios.get(
@@ -47,20 +55,33 @@ export default function CarouselComponent() {
 
   return (
     <Carousel responsive={responsive} itemClass="image-item">
-      {data.map((res) => {
+      {data.map((res, i) => {
         return (
           <div className="w-4/6 h-55">
-            <Link to="/detail_produk">
-              <img
-                src={res.product_image}
-                alt=""
-                className="w-full rounded-md h-full"
-              />
-              <h2 className='text-lg font-semibold'>{res.product_name}</h2>
+            <img
+              src={res.product_image}
+              alt=""
+              className="w-full rounded-md h-full"
+            />
+            <h2 className="text-lg font-semibold">{res.product_name}</h2>
 
-              <h2 className='font-light text-green-800'>{res.product_origin_category}</h2>
-              <h2 className='font-normal text-yellow-800'>Rp {res.product_price}</h2>
-            </Link>
+            <h2 className="font-light text-green-800">
+              {res.product_origin_category}
+            </h2>
+            <h2 className="font-normal text-yellow-800">
+              Rp {res.product_price}
+            </h2>
+            <button
+              className="w-full button bg-gray-400 text-white hover:bg-gray-800"
+              onClick={() => {
+                history.push(`detail_produk/${res.product_id}`
+                );
+              }}
+              data={data}
+            >
+              {" "}
+              Detail
+            </button>
           </div>
         );
       })}

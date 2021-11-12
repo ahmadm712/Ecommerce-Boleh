@@ -135,13 +135,13 @@ export default function HomePage() {
       <br />
       <br />
 
-      <div className="px-80 mx-auto h-full w-full">
+      <div className="sm:px-12 lg:px-72 xl:px-96 mx-auto h-full w-full">
         <h1 className="text-2xl">Produk Terlaris</h1>
         <CarouselComponent />
       </div>
 
       <br />
-      <div className="px-80 mx-auto h-full w-full">
+      <div className="sm:px-12 lg:px-72 xl:px-96 mx-auto h-full w-full">
         <h1 className="text-2xl">Produk Rekomendasi</h1>
         <CarouselComponent />
       </div>
