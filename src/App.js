@@ -39,7 +39,7 @@ function App() {
         <Route path="/checkout">
           <CheckOutPage />
         </Route>
-        <Route path="/sign-up">
+        <Route path="/register">
           <RegisterPage />
         </Route>
         <Route path="*">
