@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Logo from "../assets/images/Sale.png";
-import Logo2 from "../assets/images/logo2.png";
 
 export default function RegisterPage() {
 	const url = "https://oleh-oleh-skilvul.000webhostapp.com/api/user"
