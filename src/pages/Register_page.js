@@ -1,93 +1,60 @@
-import React, {useState, useContext} from 'react'
+import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function RegisterPage() {
+	const url = "https://oleh-oleh-skilvul.000webhostapp.com/api/user"
+	const axios = require('axios').default;
+	const [data, setData] = useState({
+		name: "",
+	    email: "",
+	    password: "",
+	    image: "",
+	    saldo: "",
+	    address: "",
+	    phone: ""
+	})
 
-// const [name, setname] = useState('');
-// const [email, setemail] = useState('');
-// const [password, setpassword] = useState('');
-// const [image, setimage] = useState('');
-// const [saldo, setsaldo] = useState('');
-// const [address, setaddress] = useState('');
-// const [phone, setphone] = useState('');
+	function submit(e){
+		e.preventDefault();
+		axios.post(url, {
+			name: data.name,
+		    email: data.email,
+		    password: data.password,
+		    image: data.image,
+		    saldo: data.saldo,
+		    address: data.address,
+		    phone: data.phone
+		})
+		.then(res => {
+			console.log(res.data)
+		})
+	}
 
-    return ( 
-    	<div>
-        <h1> ini Halaman Register </h1> 
-        <form>
-        <div className="flex justify-center mt-5 mb-5">
-        <div class="row">
-        <div className="form-group" class="hidden md:flex items-center space-x-1 row">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your name ...."
-              />
-            </div>
-            <div className="form-group" class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                name="email"
-                id="email"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your email ...."
-              />
-            </div>
-            <div className="form-group" class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                name="password"
-                id="password"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your password ...."
-              />
-            </div>
-            <div className="form-group" class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                name="image"
-                id="image"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your image ...."
-              />
-            </div>
-            <div className="form-group" class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                name="saldo"
-                id="saldo"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your saldo ...."
-              />
-            </div>
-            <div className="form-group" class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                name="address"
-                id="address"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your address ...."
-              />
-            </div>
-            <div className="form-group" class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="Input your phone ...."
-              />
-            </div>
-            
-        </div>
-          
-        </div>
-        <input type="submit" className="btn btn-primary" value="Sign Up"/>
-        </form>
-        
+	function handle(e){
+		const newData = {...data}
+		newData[e.target.id] = e.target.value
+		setData(newData)
+		console.log(newData)
+	}
+    return (
+        <div>
+            <form onSubmit={(e)=> submit(e)}>
+            	<input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder="Input name" type="text"></input>
+            	
+            	<input onChange={(e)=>handle(e)} id="email" value={data.email} placeholder="Input email" type="email"></input>
+            	
+            	<input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder="Input password" type="text"></input>
+            	
+            	<input onChange={(e)=>handle(e)} id="image" value={data.image} placeholder="Input image" type="text"></input>
+            	
+            	<input onChange={(e)=>handle(e)} id="saldo" value={data.saldo} placeholder="Input saldo" type="text"></input>
+            	
+            	<input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder="Input address" type="text"></input>
+            	
+            	<input onChange={(e)=>handle(e)} id="phone" value={data.phone} placeholder="Input phone" type="text"></input>
+            	<button>Submit</button>
+            </form>
         </div>
     )
 }
