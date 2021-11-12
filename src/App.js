@@ -40,7 +40,7 @@ function App() {
           <CheckOutPage />
         </Route>
         <Route path="/register">
-          <RegisterPage />
+          <RegisterPages />
         </Route>
         <Route path="*">
           <NotFound />
