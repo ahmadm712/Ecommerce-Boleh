@@ -5,7 +5,7 @@ import Logo2 from "../assets/images/logo2.png";
 
 
 function LoginPage() {
-  const dataBase = "https://oleh-oleh-skilvul.000webhostapp.com/api/user";
+  const dataBase = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
 
   const axios = require('axios').default;
