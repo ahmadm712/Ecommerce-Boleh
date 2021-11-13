@@ -7,6 +7,9 @@ import Logo2 from "../assets/images/logo2.png";
 
 
 function LoginPage() {
+  const [email, setEmail] = useState('login')
+  const [password, setPassword] = useState('login')
+  const history = useHistory()
   const dataBase = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
     useEffect(() => {
@@ -19,7 +22,7 @@ function LoginPage() {
 
       console.log(email,password) 
       let item={email, password};
-      let result= await fetch("https://oleh-oleh-skilvul.000webhostapp.com/api/user",{
+      let result= await fetch("https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user",{
         method:"POST",
         headers:{
           "Content-Type": "application/json",
