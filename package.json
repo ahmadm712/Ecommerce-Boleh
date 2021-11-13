@@ -45,5 +45,8 @@
     "autoprefixer": "9",
     "postcss": "7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  }
+  },
+  "proxy": {
+      "*":{ "target" : "https://oleh-oleh-skilvul.000webhostapp.com/api/user"}
+   } 
 }
