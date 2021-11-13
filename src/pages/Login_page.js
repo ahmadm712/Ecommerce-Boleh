@@ -7,9 +7,7 @@ import Logo2 from "../assets/images/logo2.png";
 
 
 function LoginPage() {
-    const [email, setEmail] = useState('Login');
-    const [password, setPassword] = useState('Login');
-    const history = useHistory();
+  const dataBase = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
     useEffect(() => {
       if (localStorage.getItem('user-info')) {
