@@ -1,13 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 
+import {ProductContext} from '../context/product_context'
+
+
 export default function CarouselComponent() {
-  const [data, setdata] = useState([]);
+  const {product} =  useContext(ProductContext)
+  // const [data, setdata] = useState([]);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -34,28 +38,28 @@ export default function CarouselComponent() {
     // history.pushState(`detail_produk/${id}`);
   };
 
-  const getProduk = async () => {
-    try {
-      const res = await axios.get(
-        "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
-      );
-      // console.log(res.data.product);
-      const p = await res.data.product;
-      // const jsonP = p.json()
-      // console.log(jsonP)
-      setdata(p);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getProduk = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
+  //     );
+  //     // console.log(res.data.product);
+  //     const p = await res.data.product;
+  //     // const jsonP = p.json()
+  //     // console.log(jsonP)
+  //     setdata(p);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getProduk();
-  }, []);
+  // useEffect(() => {
+  //   getProduk();
+  // }, []);
 
   return (
     <Carousel responsive={responsive} itemClass="image-item">
-      {data.map((res, i) => {
+      {product.map((res, i) => {
         return (
           <div className="w-4/6 h-55">
             <img
@@ -77,7 +81,7 @@ export default function CarouselComponent() {
                 history.push(`detail_produk/${res.product_id}`
                 );
               }}
-              data={data}
+              data={product}
             >
               {" "}
               Detail

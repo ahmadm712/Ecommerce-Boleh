@@ -94,40 +94,6 @@ export default function HomePage() {
     history.push("/search");
   };
 
-  // let HandleAPI = async () => {
-  //   axios
-  //     .get("https://oleh-oleh-skilvul.000webhostapp.com/api/product")
-  //     .then((res) => {
-  //       console.log(res.data.product);
-  //       const allProduct = res.data.product;
-  //       setProduct(res.data.product);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  const [data, setdata] = useState([]);
-
-  const getProduk = async () => {
-    try {
-      const res = await axios.get(
-        "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
-      );
-      // console.log(res.data.product);
-      const p = await res.data.product;
-      // const jsonP = p.json()
-      // console.log(jsonP)
-      setdata(p);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getProduk();
-  }, []);
-
   return (
     <div className="container-lg box-content">
       <Navbar />
