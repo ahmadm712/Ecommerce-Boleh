@@ -33,7 +33,7 @@ const SearchInputContainer = styled(motion.div)`
     display: flex;
     align-items: center;
     position: relative;
-    padding 2px 15px;
+    padding: 2px 15px;
     
 `;
 
