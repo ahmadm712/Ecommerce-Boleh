@@ -12,19 +12,20 @@ import CheckOutPage from "./pages/Checkout_Page";
 import HistoryTransactionPage from "./pages/HistoryTransaction_Page";
 import React from "react";
 import { useContext } from "react";
-import { cartContext } from "./components/cart";
-
+import { CartContext } from "./components/cart";
+import { useHistory } from "react-router-dom";
 import { SearchBar } from "./components/searchBar";
-import { WhislistContext } from "./components/whislist";
+import { WishlistContext } from "./components/wishlist";
 
 function App() {
-  const { products } = useContext(cartContext);
-  const { whislist } = useContext(WhislistContext);
+  const { cart } = useContext(CartContext);
+  const { wishlist } = useContext(WishlistContext);
   const history = useHistory();
-  const handlCart = () => {
+
+  const handleCart = () => {
     history.push("/checkout");
   };
-  const handleWhislist = () => {
+  const handleWishlist = () => {
     history.push("/cart");
   };
 
@@ -39,9 +40,9 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/cart">
-            {/* <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-              {products.map((e) => {
-                return <CartPage key={e.id} product={e} />;
+            <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+              {cart.map((e) => {
+                return <CartPage key={e.product_id} cart={e} />;
               })}
             </div>
             <div className="grid justify-items-center">
@@ -51,21 +52,21 @@ function App() {
               >
                 Keranjang
               </button>
-            </div> */}
+            </div>
           </Route>
           <Route path="/search">
             <SearchPage />
           </Route>
           <Route path="/wishlist">
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-              {whislist.map((e) => {
-                return <WishlistPage key={e.product_id} whislist={e} />;
+              {wishlist.map((e) => {
+                return <WishlistPage key={e.product_id} wishlist={e} />;
               })}
             </div>
             <div className="grid justify-items-center">
               <button
                 className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-                onClick={handleWhislist}
+                onClick={handleWishlist}
               >
                 Keranjang
               </button>

@@ -3,23 +3,23 @@ import axios from "axios";
 
 const defaultValue = [];
 
-export const WhislistContext = createContext(defaultValue);
+export const WishlistContext = createContext(defaultValue);
 
-export function WhislistProvider({ children }) {
-  const [whislist, setWhislist] = useState([]);
+export function WishlistProvider({ children }) {
+  const [wishlist, setWishlist] = useState([]);
   const fetchData = () => {
     const productAPI =
       "https://oleh-oleh-skilvul.000webhostapp.com/api/product";
-    const whislistAPI =
+    const wishlistAPI =
       "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/favorite";
 
     const getProduct = axios.get(productAPI);
-    const getWhislist = axios.get(whislistAPI);
-    axios.all([getProduct, getWhislist]).then(
+    const getWishlist = axios.get(wishlistAPI);
+    axios.all([getProduct, getWishlist]).then(
       axios.spread((...allData) => {
         const getDataProduct = allData[0].data.product;
-        const getDataWhislist = allData[1].data;
-        const whislitId = getDataWhislist.map((e) => {
+        const getDataWishlist = allData[1].data;
+        const whislitId = getDataWishlist.map((e) => {
           return e.product_id;
         });
         // check id
@@ -29,7 +29,7 @@ export function WhislistProvider({ children }) {
           );
           defaultValue.push(findId);
         }
-        setWhislist(defaultValue);
+        setWishlist(defaultValue);
       })
     );
   };
@@ -39,16 +39,16 @@ export function WhislistProvider({ children }) {
   });
 
   const value = {
-    whislist: whislist,
-    product_image: whislist.product_image,
-    product_name: whislist.product_name,
-    product_origin_category: whislist.product_origin_category,
-    product_price: whislist.product_price,
+    wishlist: wishlist,
+    product_image: wishlist.product_image,
+    product_name: wishlist.product_name,
+    product_origin_category: wishlist.product_origin_category,
+    product_price: wishlist.product_price,
   };
 
   return (
-    <WhislistContext.Provider value={value}>
+    <WishlistContext.Provider value={value}>
       {children}
-    </WhislistContext.Provider>
+    </WishlistContext.Provider>
   );
 }
