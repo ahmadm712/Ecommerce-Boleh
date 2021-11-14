@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { CartProvider } from "./components/cart";
-import { WhislistProvider } from "./components/whislist";
+import { WishlistProvider } from "./components/wishlist";
 
 ReactDOM.render(
   <React.StrictMode>
-    <WhislistProvider>
+    <WishlistProvider>
       <CartProvider>
         <App />
       </CartProvider>
-    </WhislistProvider>
+    </WishlistProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
