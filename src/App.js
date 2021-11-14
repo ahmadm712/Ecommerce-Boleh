@@ -10,10 +10,13 @@ import WishlistPage from "./pages/Wishlist_Page";
 import DetailProductPage from "./pages/DetailProductPage";
 import CheckOutPage from "./pages/Checkout_Page";
 import HistoryTransactionPage from "./pages/HistoryTransaction_Page";
+import {ProductProvider} from "./context/product_context"
+
 
 function App() {
   return (
-    <Router>
+   
+         <Router>
       <Switch>
         <Route exact path="/">
           <HomePage />
@@ -47,6 +50,8 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    
+   
   );
 }
 

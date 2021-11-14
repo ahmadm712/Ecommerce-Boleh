@@ -14,7 +14,7 @@ function LoginPage() {
 
     useEffect(() => {
       if (localStorage.getItem('user-info')) {
-          history.push("/add")
+          history.push("/")
       }
     }, [])
 
