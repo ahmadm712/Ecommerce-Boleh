@@ -8,7 +8,7 @@ export default function RegisterPage() {
 	const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user"
 	const axios = require('axios').default;
 	const [data, setData] = useState({
-		name: "",
+		  name: "",
 	    email: "",
 	    password: "",
 	    image: "",
