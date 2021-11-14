@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,useHistory } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/404Page";
 import LoginPage from "./pages/Login_page";
@@ -13,7 +13,7 @@ import HistoryTransactionPage from "./pages/HistoryTransaction_Page";
 import React from "react";
 import { useContext } from "react";
 import { cartContext } from "./components/cart";
-import { useHistory } from "react-router-dom";
+
 import { SearchBar } from "./components/searchBar";
 import { WhislistContext } from "./components/whislist";
 
