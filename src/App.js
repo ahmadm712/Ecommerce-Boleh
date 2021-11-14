@@ -13,7 +13,7 @@ import HistoryTransactionPage from "./pages/HistoryTransaction_Page";
 import React from "react";
 import { useContext } from "react";
 import { CartContext } from "./components/cart";
-import { useHistory } from "react-router-dom";
+
 import { SearchBar } from "./components/searchBar";
 import { WishlistContext } from "./components/wishlist";
 

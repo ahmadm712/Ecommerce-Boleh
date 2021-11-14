@@ -3,17 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { CartProvider } from "./components/cart";
-import { WhislistProvider } from "./components/whislist";
+import { WishlistProvider } from "./components/wishlist";
 import {ProductProvider} from './context/product_context'
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductProvider>
-      <WhislistProvider>
+      <WishlistProvider>
         <CartProvider>
           <App />
         </CartProvider>
-      </WhislistProvider>
+      </WishlistProvider>
     </ProductProvider>
   </React.StrictMode>,
   document.getElementById("root")
