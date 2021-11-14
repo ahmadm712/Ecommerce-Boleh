@@ -1,11 +1,26 @@
-import React from "react"
+import React, { useState, useEffect} from "react"
 
 
 export default function DetailProduct() {
-    
+
+    const [data, setData]=useState([]);
+    useEffect(async ()=> {
+      let result = await fetch("https://oleh-oleh-skilvul.000webhostapp.com/api/product");
+      result = await result.json();
+      setData(result)
+    }, [])
+    console.warn("result", data)
+
+
+
     return (
-        // <!-- component -->
+
+    
 <div className="text-gray-700 body-font overflow-hidden bg-white">
+
+  {data.map((item)=> 
+
+
  
   <div className="container px-5 py-12 mx-auto flex justify-between">
 
@@ -16,8 +31,8 @@ export default function DetailProduct() {
         
         
       <div className="lg:w-1/2 w-full p-7 mt-6 lg:mt-0 border border-gray-400">
-        <h2 className="text-sm title-font text-gray-500 tracking-widest">Makanan</h2>
-        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">Strudel Malang</h1>
+        <h2 className="text-sm title-font text-gray-500 tracking-widest">{item.product_category}</h2>
+        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.product_name}</h1>
         <div className="flex mb-4">
 
           <span className="flex items-center">
@@ -25,10 +40,10 @@ export default function DetailProduct() {
 
           <span className="text-gray-600 ml-3">Stok :</span>
 
-          <span className="text-gray-600 ml-3">100 |</span>
+          <span className="text-gray-600 ml-3">{item.product_stock} |</span>
 
 
-            <span className="text-gray-600 ml-3">Malang</span>
+            <span className="text-gray-600 ml-3">{item.product_origin_category}</span>
           </span>
 
 
@@ -57,7 +72,7 @@ export default function DetailProduct() {
         </div>
 
 
-        <p className="leading-relaxed text-justify">Strudel adalah kue berlapis, yang terbuat dari pastry dan di isi berbagai buah-buahan. Kue ini adalah makanan populer di jaman Hasburg Empire (1278 – 1780) di Austria. Awal dari makanan ini diperkirakan ditemukan oleh bangsa Yunani dan Turki yang di kenal sebagai Backlava. Saking populernya, makanan ini menjadi makanan favorit rakyat Austria, Jerman dan negara Eropa lainnya. Di Eropa, Strudel yang terkenal dan favorit adalah yang berisi buah apel. Di Jerman sering disebut dengan apfel strudel.</p>
+        <p className="leading-relaxed text-justify">{item.product_description}</p>
 
 
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
@@ -65,13 +80,7 @@ export default function DetailProduct() {
           <div className="flex ml-6 items-center">
             <span className="mr-3">Rasa</span>
             <div className="relative">
-              <select className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
-                <option>Cokelat</option>
-                <option>Keju</option>
-                <option>Pisang Keju</option>
-                <option>Coklat Keju</option>
-              </select>
-
+            
 
               <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4" viewBox="0 0 24 24">
@@ -82,9 +91,14 @@ export default function DetailProduct() {
           </div>
         </div>
         <div className="flex">
-          <span className="title-font font-medium text-2xl text-gray-900">Rp 70.000</span>
+          <span className="title-font font-medium text-2xl text-gray-900">Rp {item.product_price}</span>
 
-          <button className="flex ml-auto text-white w-64 h-10 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-center justify-center">Beli</button>
+          <button className="flex ml-auto text-white w-64 h-10 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-center justify-center"
+          data={data}
+          >
+            {" "}
+            Beli
+            </button>
           
           <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
 
@@ -95,7 +109,9 @@ export default function DetailProduct() {
         </div>
       </div>
     </div>
-  </div>
 
-    );
+  )}
+</div>
+ );
+ 
 }
