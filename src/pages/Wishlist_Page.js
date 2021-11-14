@@ -1,23 +1,35 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router";
 
-
-function WishlistPage() {
-    const history = useHistory()
-  const handleNext = () => {
-    history.push("/cart");
-  };
-    return (
-        <div>
-            <h1>ini halaman wishlist</h1>
-            <button
-          className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-          onClick={handleNext}
-        >
-          Keranjang
-        </button>
+function WishlistPage(props) {
+  const history = useHistory();
+  return (
+    <>
+      <div className="w-4/6 h-55">
+        <img
+          className="w-full rounded-md h-full"
+          src={props.wishlist.product_image}
+          alt=""
+        />
+        <div className="font-light text-green-800">
+          {props.wishlist.product_origin_category}
         </div>
-    )
+        <div className="font-bold text-xl mb-2">
+          {props.wishlist.product_name}
+        </div>
+        <div className="font-normal text-yellow-800">
+          {props.wishlist.product_price}
+        </div>
+        <button
+          className="w-full button bg-gray-400 text-white hover:bg-gray-800"
+          onClick={() => {
+            history.push(`detail_produk/${props.product_id}`);
+          }}
+        >
+          Detail
+        </button>
+      </div>
+    </>
+  );
 }
 
-export default WishlistPage
+export default WishlistPage;
