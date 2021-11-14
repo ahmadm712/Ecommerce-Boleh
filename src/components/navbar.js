@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo2.png";
+import SearchBar from "./searchBar";
 
 export default function Navbar() {
   // const history = useHistory();
@@ -20,12 +21,8 @@ export default function Navbar() {
                 </Link>
               </div>
             </div>
-            <div class="hidden md:flex items-center space-x-1">
-              <input
-                type="text"
-                class="form-input px-2 py-2 rounded-md bg-yellow-50 w-96 "
-                placeholder="search here ...."
-              />
+            <div className="pt-4">
+              <SearchBar />
             </div>
 
             <div class="hidden md:flex items-center space-x-3 ">
