@@ -1,22 +1,20 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-function CartPage() {
-    const history = useHistory()
-  const handleNext = () => {
-    history.push("/checkout");
-  };
-    return (
-        <div>
-            <h1>ini Halaman Keranjang</h1>
-            <button
-          className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-          onClick={handleNext}
-        >
-          Checkout
-        </button>
+export default function CartPage(props) {
+  return (
+    <>
+      <Link to="/detail_produk">
+        <div className="rounded overflow-hidden shadow-lg">
+          <img className="w-full" src={props.product.image} alt="" />
+          <div className="text-green-300 text-lg mb-2">
+            {props.product.location}
+          </div>
+          <div className="font-bold text-xl mb-2">
+            {props.product.productName}
+          </div>
+          <div className="text-red-600 text-xl mb-2">{props.product.price}</div>
         </div>
-    )
+      </Link>
+    </>
+  );
 }
-
-export default CartPage
