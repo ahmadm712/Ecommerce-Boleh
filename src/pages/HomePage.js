@@ -113,9 +113,7 @@ export default function HomePage() {
       </div>
 
       <div className="flex justify-center mt-5 mb-5">
-        <button
-          className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-        >
+        <button className="bg-green-500  text-white font-bold py-2 px-4 rounded">
           Muat Lebih
         </button>
       </div>

@@ -10,7 +10,7 @@ export default function Navbar() {
   // };
   return (
     <>
-      <nav class="bg-primary-200 shadow-lg mb-2">
+      <nav class="bg-primary-200 shadow-lg mb-2 h-16 ">
         <div class="max-w-9xl mx-auto px-4">
           <div class="flex justify-between">
             <div class="flex space-x-7">
@@ -21,11 +21,10 @@ export default function Navbar() {
                 </Link>
               </div>
             </div>
-            <div className="pt-4">
+            <div className="pt-4 relative z-10 justify-self-center ">
               <SearchBar />
             </div>
-
-            <div class="hidden md:flex items-center space-x-3 ">
+            <div class="hidden md:flex items-center space-x-3 h-12">
               <Link
                 to="/wishlist"
                 class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"

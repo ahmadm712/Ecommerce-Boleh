@@ -47,7 +47,11 @@ export function ProductProvider({ children }) {
     product: product.slice(0, 5),
   };
 
-  console.log("Context", contextValue);
+  // console.log("Context", contextValue);
 
-  return <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>;
+  return (
+    <ProductContext.Provider value={contextValue}>
+      {children}
+    </ProductContext.Provider>
+  );
 }

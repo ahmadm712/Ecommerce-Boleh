@@ -23,7 +23,7 @@ import { SearchBar } from "./components/searchBar";
 import { WishlistContext } from "./components/wishlist";
 
 function App() {
-  const { cart } = useContext(CartContext);
+  const { product, cart } = useContext(CartContext);
   const { wishlist } = useContext(WishlistContext);
 
   return (
@@ -37,12 +37,13 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/cart">
-            <div className="container mx-auto">
-              <div className="place-items-center p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
-                {cart.map((e) => {
-                  return <CartPage key={e.product_id} cart={e} />;
-                })}
-              </div>
+            <div className="container mx-auto p-10">
+              {product.map((e) => {
+                return <CartPage key={e.product_id} product={e} />;
+              })}
+              {/* {cart.map((e) => {
+                return <CartPage key={e.product_id} product={e} />;
+              })} */}
             </div>
           </Route>
           <Route path="/search">
