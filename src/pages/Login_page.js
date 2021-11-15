@@ -39,38 +39,10 @@ function LoginPage() {
           }    
         }
         
-        // if (res.data.email == email) {
-        //   console.log("berhasil")
-        // }
-        // for (var i = 0; i <= 10; i++) {
-        //   console.log(res.data[i])
-        // }
-        
       })
       .catch((error) => {
         console.log(error);
       });
-
-      
-
-      // let result= await fetch("https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user",{
-      //   method:"POST",
-      //   headers:{
-      //     "Content-Type": "application/json",
-      //     "Accept": "application/json"
-      //   },
-      //   body:JSON.stringify(item)
-
-      // });
-
-
-      
-
-      // result = await result.json();
-      
-
-
-
 
     }
 

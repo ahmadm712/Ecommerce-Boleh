@@ -91,11 +91,6 @@ export default function HomePage() {
     history.push("/search");
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('user-info')
-    history.push("/login");
-  };
-
   let HandleAPI = () => {
     axios
       .get("https://oleh-oleh-skilvul.000webhostapp.com/api/product")
@@ -110,7 +105,13 @@ export default function HomePage() {
       });
   };
 
-  
+  //logout
+  const handleLogout = () => {
+    localStorage.removeItem('user-info')
+    history.push("/login");
+  };
+
+  //user login
   if (localStorage.getItem("user-info") !== null) {
     let user_login = JSON.parse(localStorage.getItem('user-info'));
     console.log(user_login.name);
