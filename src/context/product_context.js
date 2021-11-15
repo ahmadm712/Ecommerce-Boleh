@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import detail from "../components/detail-product";
 
 // "product_id": 12,
 //             "product_name": "Nopia",
@@ -12,7 +13,7 @@ import { createContext, useEffect, useState } from "react";
 //             "product_favorite_status": "0",
 //             "product_description": "Nopia merupakan mak
 
-function createNewProduct(product) {
+export default function createNewProduct(product) {
   return {
     product_id: product.product_id,
     product_name: product.product_name,
@@ -50,4 +51,5 @@ export function ProductProvider({ children }) {
   console.log("Context", contextValue);
 
   return <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>;
+  <detail></detail>
 }

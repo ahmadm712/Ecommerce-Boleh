@@ -1,19 +1,10 @@
 import axios from "axios";
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-=======
 import React, { useEffect, useState,useContext } from "react";
->>>>>>> 485e951b0e33cfa1b7d12f4b381beb8eccde1aba
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-
-export default function CarouselComponent() {
-  const [data, setdata] = useState([]);
-=======
 
 import {ProductContext} from '../context/product_context'
 
@@ -21,7 +12,6 @@ import {ProductContext} from '../context/product_context'
 export default function CarouselComponent() {
   const {product} =  useContext(ProductContext)
   // const [data, setdata] = useState([]);
->>>>>>> 485e951b0e33cfa1b7d12f4b381beb8eccde1aba
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -47,31 +37,6 @@ export default function CarouselComponent() {
   const handleKlik = (id) => {
     // history.pushState(`detail_produk/${id}`);
   };
-<<<<<<< HEAD
-
-  const getProduk = async () => {
-    try {
-      const res = await axios.get(
-        "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
-      );
-      // console.log(res.data.product);
-      const p = await res.data.product;
-      // const jsonP = p.json()
-      // console.log(jsonP)
-      setdata(p);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getProduk();
-  }, []);
-
-  return (
-    <Carousel responsive={responsive} itemClass="image-item">
-      {data.map((res, i) => {
-=======
 
   // const getProduk = async () => {
   //   try {
@@ -95,7 +60,6 @@ export default function CarouselComponent() {
   return (
     <Carousel responsive={responsive} itemClass="image-item">
       {product.map((res, i) => {
->>>>>>> 485e951b0e33cfa1b7d12f4b381beb8eccde1aba
         return (
           <div className="w-4/6 h-55">
             <img
@@ -117,11 +81,7 @@ export default function CarouselComponent() {
                 history.push(`detail_produk/${res.product_id}`
                 );
               }}
-<<<<<<< HEAD
-              data={data}
-=======
               data={product}
->>>>>>> 485e951b0e33cfa1b7d12f4b381beb8eccde1aba
             >
               {" "}
               Detail
