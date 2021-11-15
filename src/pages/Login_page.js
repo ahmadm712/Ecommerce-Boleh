@@ -9,9 +9,10 @@ import Logo2 from "../assets/images/logo2.png";
 
 function LoginPage() {
   const [email, setEmail] = useState('login')
+  const [email_cek, setEmail_cek] = useState('login')
   const [password, setPassword] = useState('login')
   const history = useHistory()
-  const dataBase = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
+  const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
     useEffect(() => {
       if (localStorage.getItem('user-info')) {
@@ -23,22 +24,50 @@ function LoginPage() {
 
       console.log(email,password) 
       let item={email, password};
-      let result= await fetch("https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user",{
-        method:"POST",
-        headers:{
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body:JSON.stringify(item)
-
+      
+     axios
+      .get(url)
+      .then((res) => {
+        for (var i = res.data.length - 1; i >= 0; i--) {
+          if (email == res.data[i].email) {
+            console.log(res.data[i].name)
+            if (password == res.data[i].password) {
+              console.log(res.data[i].email)
+              localStorage.setItem("user-info", JSON.stringify(res.data[i]))
+              history.push("/")
+            }
+          }    
+        }
+        
+        // if (res.data.email == email) {
+        //   console.log("berhasil")
+        // }
+        // for (var i = 0; i <= 10; i++) {
+        //   console.log(res.data[i])
+        // }
+        
+      })
+      .catch((error) => {
+        console.log(error);
       });
+
+      
+
+      // let result= await fetch("https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user",{
+      //   method:"POST",
+      //   headers:{
+      //     "Content-Type": "application/json",
+      //     "Accept": "application/json"
+      //   },
+      //   body:JSON.stringify(item)
+
+      // });
 
 
       
 
-      result = await result.json();
-      localStorage.setItem("user-info", JSON.stringify(result))
-      history.push("/")
+      // result = await result.json();
+      
 
 
 

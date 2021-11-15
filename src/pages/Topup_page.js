@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function TopupPage() {
-	let user_login = JSON.parse(localStorage.getItem('user_info'));
+	let user_login = JSON.parse(localStorage.getItem('user-info'));
 	console.log(user_login.name);
 
 	const url = `https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user/${user_login.user_id}`;
@@ -37,32 +37,34 @@ function TopupPage() {
       .then((res) => {
         data.saldo_old = parseInt(res.data.saldo);
         console.log(res.data.saldo);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-	const url_voucher = `https://6191168c41928b001768ff36.mockapi.io/api/boleh/voucher/${data.voucher_id}`;
+        const url_voucher = `https://6191168c41928b001768ff36.mockapi.io/api/boleh/voucher/${data.voucher_id}`;
 		axios
       .get(url_voucher)
       .then((res) => {
         data.saldo_new = parseInt(res.data.voucher_saldo);
         console.log(res.data.voucher_saldo);
+        let total_saldo =  data.saldo_new + data.saldo_old;
+		if (total_saldo != "") {	
+			axios.put(url, {
+			    saldo: total_saldo
+			})
+			.then(res => {
+				console.log(res.data)
+				localStorage.setItem("user-info", JSON.stringify(res.data))
+				history.push("/topup")
+			})
+		}
+      })
+      .catch((error) => {
+        console.log(error);
+      });
       })
       .catch((error) => {
         console.log(error);
       });
 
-     let total_saldo =  data.saldo_new + data.saldo_old;
+	
 		
-		if (total_saldo != "") {
-			axios.put(url, {
-		    saldo: total_saldo
-		})
-		.then(res => {
-			console.log(res.data)
-		})
-		}
 	}
 
 	function handle(e){
@@ -83,7 +85,7 @@ function TopupPage() {
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Saldo</label>
               <input onChange={(e)=>handle(e)} id="voucher_id" value={data.voucher_id} placeholder="Input voucher id" type="text" className="w-full p-2 border border-gray-300 rounded mt-1" required/>
             </div>
-
+            
             <button
                  className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                  type="submit"
