@@ -5,13 +5,16 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
-import CartContext from "../context/cart/cart_state";
+
 
 import {ProductContext} from '../context/product_context'
+import CartContext from '../context/cart/cart_context'
 
 
 export default function CarouselComponent() {
   // const { addToCart } = useContext(CartContext);
+  const {addToCart} = useContext(CartContext)
+
   const {product} =  useContext(ProductContext)
   // const [data, setdata] = useState([]);
   const responsive = {
@@ -87,6 +90,23 @@ export default function CarouselComponent() {
             >
               {" "}
               Detail
+            </button>
+            <button
+              className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
+              onClick={()=>addToCart(product)}
+              data={product}
+            >
+              {" "}
+              Add To Cart
+            </button>
+
+            <button
+              className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
+             
+              data={product}
+            >
+              {" "}
+              Add To WishList
             </button>
            
             {/* <button
