@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EGambar from "../assets/images/Ecommerce.png";
 import AppD from "../assets/images/AppD.png";
 import Navbar from "../components/navbar";
@@ -7,6 +7,8 @@ import CarouselComponent from "../components/carousel-card";
 import BannerComponent from "../components/banner";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Carousel from "react-multi-carousel";
+// import { data } from "autoprefixer";
 
 export default function HomePage() {
   const dataProduct = [
@@ -67,23 +69,24 @@ export default function HomePage() {
       score: 9.09,
     },
   ];
-  const products = [
-    {
-      image: "https://mdbootstrap.com/img/new/slides/052.jpg",
-      price: "Rp 200000",
-      productName: "Hat",
-    },
-    {
-      image: "https://mdbootstrap.com/img/new/slides/052.jpg",
-      price: "Rp 300000",
-      productName: "Shirt",
-    },
-    {
-      image: "https://mdbootstrap.com/img/new/slides/052.jpg",
-      price: "Rp 300000",
-      productName: "Jeans",
-    },
-  ];
+
+  // const products = [
+  //   {
+  //     image: "https://mdbootstrap.com/img/new/slides/052.jpg",
+  //     price: "Rp 200000",
+  //     productName: "Hat",
+  //   },
+  //   {
+  //     image: "https://mdbootstrap.com/img/new/slides/052.jpg",
+  //     price: "Rp 300000",
+  //     productName: "Shirt",
+  //   },
+  //   {
+  //     image: "https://mdbootstrap.com/img/new/slides/052.jpg",
+  //     price: "Rp 300000",
+  //     productName: "Jeans",
+  //   },
+  // ];
 
   const history = useHistory();
 
@@ -121,52 +124,29 @@ export default function HomePage() {
   }
 
   return (
-    <>
-      <div className="container-xl">
-        <Navbar />
+    <div className="container-lg box-content">
+      <Navbar />
+      <BannerComponent />
+      <br />
+      <br />
 
-        <BannerComponent />
-
-        <br />
-
-        <br />
-        <div></div>
-
+      <div className="sm:px-12 lg:px-72 xl:px-96 mx-auto h-full w-full">
+        <h1 className="text-2xl">Produk Terlaris</h1>
         <CarouselComponent />
-        <br />
-        <CarouselComponent />
-        <br />
-
-        <CarouselComponent />
-        {/* <div className="grid-rows-3">
-          {axios
-            .get("https://oleh-oleh-skilvul.000webhostapp.com/api/product")
-            .then((res) => {
-              return <ProductCard data={res.data.product} />;
-            })
-            .catch((error) => {
-              console.log(error);
-            })}
-        </div> */}
-
-        {/* {
-          productApi.map((res)=>{
-            return(
-              <ProductCard data={res}/>
-            )
-          })
-        } */}
-
-        <div className="flex justify-center mt-5 mb-5">
-          <button
-            className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-            onClick={HandleAPI}
-          >
-            Muat Lebih
-          </button>
-        </div>
-        <Footer />
       </div>
-    </>
+
+      <br />
+      <div className="sm:px-12 lg:px-72 xl:px-96 mx-auto h-full w-full">
+        <h1 className="text-2xl">Produk Rekomendasi</h1>
+        <CarouselComponent />
+      </div>
+
+      <div className="flex justify-center mt-5 mb-5">
+        <button className="bg-green-500  text-white font-bold py-2 px-4 rounded">
+          Muat Lebih
+        </button>
+      </div>
+      <Footer />
+    </div>
   );
 }
