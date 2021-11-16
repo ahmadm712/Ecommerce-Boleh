@@ -1,9 +1,13 @@
 import { useHistory } from "react-router";
 
+
+
 function CartPage(props) {
   const history = useHistory();
   return (
     <>
+
+    
       <div className="w-4/6 h-55">
         <img
           className="w-full rounded-md h-full"
@@ -26,6 +30,7 @@ function CartPage(props) {
           Detail
         </button>
       </div>
+      
     </>
   );
 }
