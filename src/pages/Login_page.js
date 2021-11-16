@@ -1,64 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
-import Logo from "../assets/images/Sale.png";
-import Logo2 from "../assets/images/logo2.png";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-function LoginPage() {
-  const history = useHistory();
-  const dataBase = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
+import { useHistory } from "react-router-dom";
+import Logo from "../assets/images/Sale.png";
+import Logo2 from "../assets/images/logo2.png";
 
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      history.push("/add");
-    }
-  }, []);
-  const [data, setData] = useState({ email: "", password: "" });
-  const [dataErrors, setDataErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+function LoginPage() {
+  const [email, setEmail] = useState("login");
+  const [email_cek, setEmail_cek] = useState("login");
+  const [password, setPassword] = useState("login");
+  const history = useHistory();
+  const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
   async function login() {
-    const result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    history.push("/");
-
-    console.log(dataBase);
-  }
-  function submit(e) {
-    e.preventDefault();
-    setDataErrors(validate(data));
-    setIsSubmit(true);
+    console.log(email, password);
+    let item = { email, password };
 
     axios
-      .post(dataBase, { email: data.email, password: data.password })
-
+      .get(url)
       .then((res) => {
-        console.log(res.data);
+        for (var i = res.data.length - 1; i >= 0; i--) {
+          if (email == res.data[i].email) {
+            console.log(res.data[i].name);
+            if (password == res.data[i].password) {
+              console.log(res.data[i].email);
+              localStorage.setItem("user-info", JSON.stringify(res.data[i]));
+              history.push("/");
+            }
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
-
-  useEffect(() => {
-    console.log(dataErrors);
-    if (Object.keys(dataErrors).length === 0 && isSubmit) {
-      console.log(data);
-    }
-  }, [dataErrors]);
-  const validate = (values) => {
-    const errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.email) {
-      errors.email = "Email harus diisi!";
-    } else if (!regex.test(values.email)) {
-      errors.email = "Masukkan email yang valid!";
-    }
-
-    if (!values.password) {
-      errors.password = "Password harus diisi!";
-    } else if (values.password.length < 8) {
-      errors.password = "Password harus berisi minimal 8 karakter!";
-    }
-    return errors;
-  };
 
   return (
     <div className="min-h-screen flex justify-around px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
@@ -72,7 +48,7 @@ function LoginPage() {
       <div className="min-h-screen bg-white-100 flex flex-col">
         <div className="max-w-xl w-full mx-auto"></div>
         <div className="max-w-xl w-96 mx-auto mt-4 bg-white p-8 border border-gray-300 shadow-xl rounded-xl">
-          <form onSubmit={(e) => submit(e)} className="space-y-6">
+          <form action="" className="space-y-6">
             <div class="h-14 w-14 mx-auto">
               <img src={Logo2} alt="Logo" />
             </div>
@@ -89,18 +65,14 @@ function LoginPage() {
                 Email
               </label>
               <input
-                // onChange={(e) => handle(e)}
-                value={data.email}
-                id="email"
+                id="email-address"
                 name="email"
                 type="text"
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 placeholder="Email address"
+                required
               />
-            </div>
-
-            <div className="text-red-600">
-              <p>{dataErrors.email}</p>
             </div>
 
             <div>
@@ -111,18 +83,14 @@ function LoginPage() {
                 Password
               </label>
               <input
-                // onChange={(e) => handle(e)}
-                value={data.password}
                 id="password"
                 name="password"
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 placeholder="Password"
+                required
               />
-            </div>
-
-            <div className="text-red-600">
-              <p>{dataErrors.password}</p>
             </div>
 
             <div class="mb-4">
