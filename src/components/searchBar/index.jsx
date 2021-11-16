@@ -177,7 +177,7 @@ export default function SearchBar(props) {
 
 
       useDebounce(searchQuery, 500, searchProduct)
-      console.log("value : ", searchQuery)
+      // console.log("value : ", searchQuery)
 
     return(
     <SearchBarContainer 
