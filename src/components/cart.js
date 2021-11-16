@@ -2,11 +2,14 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const defaultValue = [];
+const defaultValue2 = [];
 
 export const CartContext = createContext(defaultValue);
 
 export function CartProvider({ children }) {
+  const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
+
   const fetchData = () => {
     const productAPI =
       "https://oleh-oleh-skilvul.000webhostapp.com/api/product";
@@ -19,17 +22,32 @@ export function CartProvider({ children }) {
       axios.spread((...allData) => {
         const getDataProduct = allData[0].data.product;
         const getDataCart = allData[1].data;
-        const cartId = getDataCart.map((e) => {
+        const productId = getDataCart.map((e) => {
           return e.product_id;
         });
+        // console.log(productId);
+        const cartId = getDataProduct.map((e) => {
+          return e.product_id;
+        });
+        // console.log(cartId);
+
         // check id
-        for (let i = 0; i < cartId.length; i++) {
+        for (let i = 0; i < productId.length; i++) {
           const findId = getDataProduct.find(
-            ({ product_id }) => product_id == cartId[i]
+            ({ product_id }) => product_id == productId[i]
           );
           defaultValue.push(findId);
         }
-        setCart(defaultValue);
+        setProduct(defaultValue);
+
+        for (let i = 0; i < productId.length; i++) {
+          const findId = getDataCart.find(
+            ({ product_id }) => product_id == productId[i]
+          );
+          defaultValue2.push(findId);
+        }
+        // console.log(defaultValue2);
+        setCart(defaultValue2);
       })
     );
   };
@@ -39,11 +57,8 @@ export function CartProvider({ children }) {
   });
 
   const value = {
+    product: product,
     cart: cart,
-    product_image: cart.product_image,
-    product_name: cart.product_name,
-    product_origin_category: cart.product_origin_category,
-    product_price: cart.product_price,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

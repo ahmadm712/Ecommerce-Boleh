@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import EGambar from "../assets/images/Ecommerce.png";
 import AppD from "../assets/images/AppD.png";
 import Navbar from "../components/navbar";
@@ -7,10 +7,12 @@ import CarouselComponent from "../components/carousel-card";
 import BannerComponent from "../components/banner";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import CartContext from '../context/cart/cart_context'
 import Carousel from "react-multi-carousel";
 // import { data } from "autoprefixer";
 
 export default function HomePage() {
+  const {addToCart} = useContext(CartContext)
   const dataProduct = [
     {
       mal_id: 5114,
@@ -94,6 +96,36 @@ export default function HomePage() {
     history.push("/search");
   };
 
+  let HandleAPI = () => {
+    axios
+      .get("https://oleh-oleh-skilvul.000webhostapp.com/api/product")
+      .then((res) => {
+        // productApi.push(res.data.product)
+        // console.log(res);
+        // console.log(productApi);
+        console.log(res.data.product);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //logout
+  const handleLogout = () => {
+    localStorage.removeItem('user-info')
+    history.push("/login");
+  };
+
+
+  //user login
+  if (localStorage.getItem("user-info") !== null) {
+    let user_login = JSON.parse(localStorage.getItem('user-info'));
+    console.log(user_login.name);
+    console.log(user_login.saldo);
+  }else{
+    console.log("belum login");
+  }
+
   return (
     <div className="container-lg box-content">
       <Navbar />
@@ -113,9 +145,7 @@ export default function HomePage() {
       </div>
 
       <div className="flex justify-center mt-5 mb-5">
-        <button
-          className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-        >
+        <button className="bg-green-500  text-white font-bold py-2 px-4 rounded">
           Muat Lebih
         </button>
       </div>
