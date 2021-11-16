@@ -28,7 +28,7 @@ function App() {
   const { wishlist } = useContext(WishlistContext);
 
   return (
-<<<<<<< HEAD
+
     <div>
       <Router>
         <Switch>
@@ -78,45 +78,6 @@ function App() {
         </Switch>
       </Router>
     </div>
-=======
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/cart">
-          <CartPage />
-        </Route>
-        <Route path="/search">
-          <SearchPage />
-        </Route>
-        <Route path="/wishlist">
-          <WishlistPage />
-        </Route>
-        <Route path="/detail_produk">
-          <DetailProductPage />
-        </Route>
-        <Route path="/history_transaction">
-          <HistoryTransactionPage />
-        </Route>
-        <Route path="/checkout">
-          <CheckOutPage />
-        </Route>
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
-        <Route path="/topup">
-          <TopupPage />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
->>>>>>> origin/ikhwan2
   );
 }
 
