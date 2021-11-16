@@ -14,16 +14,8 @@ function LoginPage() {
   const history = useHistory()
   const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
-    useEffect(() => {
-      if (localStorage.getItem('user-info')) {
-          history.push("/add")
-      }
-    }, [])
 
-    async function login() {
-
-      console.log(email,password) 
-      let item={email, password};
+  let item={email, password};
       
      axios
       .get(url)
@@ -44,7 +36,7 @@ function LoginPage() {
         console.log(error);
       });
 
-    }
+    
 
   return (
     <div className="min-h-screen flex justify-around px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
@@ -75,7 +67,6 @@ function LoginPage() {
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Password</label>
               <input id="password" name="password" type="password" 
-              onChange={(e)=>setPassword(e.target.value)} 
               className="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Password" required/>
             </div>
             
@@ -136,9 +127,9 @@ function LoginPage() {
      
   
   );
-}
 
 
 
+  }
 
 export default LoginPage;
