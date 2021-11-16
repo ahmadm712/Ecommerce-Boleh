@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Footer from "../components/footer";
 
 function WishlistPage(props) {
   const history = useHistory();
