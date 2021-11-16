@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Logo from "../assets/images/Shopping.png";
+import Logo from "../assets/images/Sale.png";
 import Logo2 from "../assets/images/logo2.png";
 
 export default function RegisterPage() {

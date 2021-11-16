@@ -114,6 +114,7 @@ export default function HomePage() {
     history.push("/login");
   };
 
+
   //user login
   if (localStorage.getItem("user-info") !== null) {
     let user_login = JSON.parse(localStorage.getItem('user-info'));
