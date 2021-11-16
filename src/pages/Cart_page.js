@@ -7,13 +7,7 @@ function CartPage(props) {
   const history = useHistory();
   return (
     <>
-<<<<<<< HEAD
-
-    
-      <div className="w-4/6 h-55">
-=======
       <div className="flex my-4">
->>>>>>> 002b3d1019fddf5cd8f3954cda72d5c4a55930d0
         <img
           className="h-48 lg:h-auto lg:w-48 bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden  "
           src={props.product.product_image}
@@ -104,9 +98,6 @@ function CartPage(props) {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      
-=======
 
       {/* <div class="p-10">
         <div class=" w-full lg:max-w-full lg:flex">
@@ -150,7 +141,6 @@ function CartPage(props) {
           </div>
         </div>
       </div> */}
->>>>>>> 002b3d1019fddf5cd8f3954cda72d5c4a55930d0
     </>
   );
 }

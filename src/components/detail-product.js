@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { ProductContext } from "../context/product_context"
-import { useCart } from "react-use-cart"
+import CardContext from "../context/cart/cart_context"
 
 export default function DetailProduct() {
 
   const { product } = useContext(ProductContext)
+  const { addToCart } = useContext(CardContext)
   
     // console.log(props.match.params);
     // Variable berikut akan menampung product movie yang akan kita tampilkan
@@ -14,7 +15,7 @@ export default function DetailProduct() {
     const products = product.find((dataFind) => dataFind.product_id === Number(id));
 
 
-    const { addItem } = useCart();
+    
 
 
     return (
@@ -70,7 +71,7 @@ export default function DetailProduct() {
           <span className="title-font font-medium text-2xl text-gray-900 mt-5 ">Rp {products.product_price}</span>
 
           <button className="flex ml-auto text-white w-60 h-10 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-center justify-center mt-5"
-          onClick={() => addItem(ProductContext.products)}
+          onClick={() => addToCart(products)}
            
           >
             {" "}
