@@ -7,6 +7,14 @@
   pointer-events: none;
 }
 
+.like-no {
+  background: url("./img/dislike.svg");
+}
+
+.like-yes {
+  background: url("./img/like.svg");
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
