@@ -40,10 +40,6 @@ export function WishlistProvider({ children }) {
 
   const value = {
     wishlist: wishlist,
-    product_image: wishlist.product_image,
-    product_name: wishlist.product_name,
-    product_origin_category: wishlist.product_origin_category,
-    product_price: wishlist.product_price,
   };
 
   return (

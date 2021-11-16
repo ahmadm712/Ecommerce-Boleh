@@ -24,47 +24,60 @@ import { SearchBar } from "./components/searchBar";
 import { WishlistContext } from "./components/wishlist";
 
 function App() {
-  const { cart } = useContext(CartContext);
+  const { product, cart } = useContext(CartContext);
   const { wishlist } = useContext(WishlistContext);
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/cart">
-          <CartPage />
-        </Route>
-        <Route path="/search">
-          <SearchPage />
-        </Route>
-        <Route path="/wishlist">
-          <WishlistPage />
-        </Route>
-        <Route path="/detail_produk">
-          <DetailProductPage />
-        </Route>
-        <Route path="/history_transaction">
-          <HistoryTransactionPage />
-        </Route>
-        <Route path="/checkout">
-          <CheckOutPage />
-        </Route>
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
-        <Route path="/topup">
-          <TopupPage />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/cart">
+            <div className="container mx-auto p-10">
+              {product.map((e) => {
+                return <CartPage key={e.product_id} product={e} />;
+              })}
+              {/* {cart.map((e) => {
+                return <CartPage key={e.product_id} product={e} />;
+              })} */}
+            </div>
+          </Route>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
+          <Route path="/wishlist">
+            <div className="container mx-auto">
+              <div className="place-items-center p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+                {wishlist.map((e) => {
+                  return <WishlistPage key={e.product_id} wishlist={e} />;
+                })}
+              </div>
+            </div>
+          </Route>
+          <Route
+            path="/detail_produk/:id"
+            component={DetailProductPage}
+          ></Route>
+          <Route path="/history_transaction">
+            <HistoryTransactionPage />
+          </Route>
+          <Route path="/checkout">
+            <CheckOutPage />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
