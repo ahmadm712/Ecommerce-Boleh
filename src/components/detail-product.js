@@ -26,7 +26,7 @@ export default function DetailProduct() {
         
         
       <div className="lg:w-1/2 w-full p-7 mt-6  lg:mt-0 border border-gray-400">
-        <h2 className="text-sm title-font text-gray-500 tracking-widest font-medium">{products.product_category}</h2>
+        <h2 className="text-md title-font text-gray-500 tracking-widest font-medium">{products.product_category}</h2>
         <h1 className="text-gray-900 text-4xl title-font font-medium text- mb-1 mt-3">{products.product_name}</h1>
         <div className="flex mb-4">
 
@@ -35,9 +35,11 @@ export default function DetailProduct() {
 
           
 
-          <span className="text-gray-600 ml-0 mt-3 text-lg">Stok : {products.product_stock} |</span>
+          <span className="text-gray-600 ml-0 mt-3 text-lg font-medium">Stok : {products.product_stock} |</span>
 
-          <span className="text-gray-600 ml-3 mt-3">Berat : {products.product_weight} gram</span>
+          <span className="text-gray-600 ml-3 mt-3 font-medium">Berat : {products.product_weight} gram |</span>
+
+          <span className="text-gray-600 ml-3 mt-3 font-medium">Asal : {products.product_origin_category}</span>
 
             <span className="text-gray-600 ml-3"></span>
           </span>
