@@ -1,10 +1,9 @@
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 function WishlistPage(props) {
   const history = useHistory();
-
   const dislike = (
     <svg
       version="1.0"
@@ -72,11 +71,12 @@ function WishlistPage(props) {
           </div>
 
           <button
-            className="w-full button bg-gray-400 text-white hover:bg-gray-800"
+            className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800"
             onClick={() => {
-              history.push(`detail_produk/${props.product_id}`);
+              history.push(`detail_produk/${props.wishlist.product_id}`);
             }}
           >
+            {" "}
             Detail
           </button>
         </div>
