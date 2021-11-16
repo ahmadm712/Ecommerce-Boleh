@@ -7,12 +7,12 @@ import CarouselComponent from "../components/carousel-card";
 import BannerComponent from "../components/banner";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import CartContext from '../context/cart/cart_context'
+
 import Carousel from "react-multi-carousel";
 // import { data } from "autoprefixer";
 
 export default function HomePage() {
-  const {addToCart} = useContext(CartContext)
+
   const dataProduct = [
     {
       mal_id: 5114,
