@@ -94,6 +94,35 @@ export default function HomePage() {
     history.push("/search");
   };
 
+  let HandleAPI = () => {
+    axios
+      .get("https://oleh-oleh-skilvul.000webhostapp.com/api/product")
+      .then((res) => {
+        // productApi.push(res.data.product)
+        // console.log(res);
+        // console.log(productApi);
+        console.log(res.data.product);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //logout
+  const handleLogout = () => {
+    localStorage.removeItem('user-info')
+    history.push("/login");
+  };
+
+  //user login
+  if (localStorage.getItem("user-info") !== null) {
+    let user_login = JSON.parse(localStorage.getItem('user-info'));
+    console.log(user_login.name);
+    console.log(user_login.saldo);
+  }else{
+    console.log("belum login");
+  }
+
   return (
     <div className="container-lg box-content">
       <Navbar />

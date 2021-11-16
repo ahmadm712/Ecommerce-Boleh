@@ -5,47 +5,46 @@ import Logo from "../assets/images/Shopping.png";
 import Logo2 from "../assets/images/logo2.png";
 
 export default function RegisterPage() {
-	const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user"
-	const axios = require('axios').default;
-	const [data, setData] = useState({
-		  name: "",
-	    email: "",
-	    password: "",
-	    image: "",
-	    saldo: "",
-	    address: "",
-	    phone: ""
-	})
-
+  const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user"
+  const axios = require('axios').default;
+  const [data, setData] = useState({
+      name: "",
+      email: "",
+      password: "",
+      image: "",
+      address: "",
+      phone: ""
+  })
+const history = useHistory();
   const [dataErrors, setDataErrors] = useState({})
    const [isSubmit, setIsSubmit] = useState(false);
 
-	function submit(e){
-		e.preventDefault();
+  function submit(e){
+    e.preventDefault();
     setDataErrors(validate(data));
     setIsSubmit(true);
 
 
-		axios.post(url, {
-			name: data.name,
-		    email: data.email,
-		    password: data.password,
-		    image: data.image,
-		    saldo: data.saldo,
-		    address: data.address,
-		    phone: data.phone
-		})
-		.then(res => {
-			console.log(res.data)
-		})
-	}
+    axios.post(url, {
+      name: data.name,
+        email: data.email,
+        password: data.password,
+        image: data.image,
+        address: data.address,
+        phone: data.phone
+    })
+    .then(res => {
+      console.log(res.data)
+      history.push("/login");
+    })
+  }
 
-	function handle(e){
-		const newData = {...data}
-		newData[e.target.id] = e.target.value
-		setData(newData)
-		console.log(newData)
-	}
+  function handle(e){
+    const newData = {...data}
+    newData[e.target.id] = e.target.value
+    setData(newData)
+    console.log(newData)
+  }
 
 
   useEffect(() => {
@@ -78,10 +77,6 @@ export default function RegisterPage() {
         errors.image = "Gambar harus diisi!";
       }
 
-      if(!values.saldo) {
-        errors.saldo = "Masukkan saldo!";
-      }
-      
       if(!values.address) {
         errors.address = "Alamat harus diisi!";
       }
@@ -153,14 +148,6 @@ export default function RegisterPage() {
             <p>{dataErrors.image}</p>
             </div>
 
-            <div>
-              <label htmlFor="" className="text-sm font-bold text-gray-600 block">Saldo</label>
-              <input onChange={(e)=>handle(e)} id="saldo" value={data.saldo} placeholder="Input saldo" type="text" className="w-full p-2 border border-gray-300 rounded mt-1"/>
-            </div>
-
-            <div className="text-red-600">
-            <p>{dataErrors.saldo}</p>
-            </div>
 
             <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Address</label>
@@ -177,8 +164,8 @@ export default function RegisterPage() {
             <div className="text-red-600">
             <p>{dataErrors.phone}</p>
             </div>
-            	
-            	<div class="mb-6 text-center">
+              
+              <div class="mb-6 text-center">
                <button
                  className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                  type="submit"
@@ -207,4 +194,3 @@ export default function RegisterPage() {
      </div>
     )
 }
-

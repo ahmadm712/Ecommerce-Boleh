@@ -4,10 +4,7 @@ import Logo from "../assets/images/logo2.png";
 import SearchBar from "./searchBar";
 
 export default function Navbar() {
-  // const history = useHistory();
-  // const handleClick = () => {
-  //   history.push("/search");
-  // };
+  
   return (
     <>
       <nav class="bg-primary-200 shadow-lg mb-2">

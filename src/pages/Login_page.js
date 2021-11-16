@@ -5,39 +5,37 @@ import Logo2 from "../assets/images/logo2.png";
 
 
 function LoginPage() {
-
-  const dataBase = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
+  const [email, setEmail] = useState('login')
+  const [email_cek, setEmail_cek] = useState('login')
+  const [password, setPassword] = useState('login')
+  const history = useHistory()
+  const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
 
   
 
   const axios = require('axios').default;
 
-   const [data, setData] = useState({ email: "", password: "",})
-   const [dataErrors, setDataErrors] = useState({})
-   const [isSubmit, setIsSubmit] = useState(false);
-
-  function submit(e){
-          e.preventDefault();
-          setDataErrors(validate(data));
-          setIsSubmit(true);
-
-          axios.post(dataBase, {email: data.email, password: data.password})
-
-            .then(res => {console.log(res.data)})
-          };
-
-
-  function handle(e){
-
-      const dataBase = {...data}
-
-          dataBase[e.target.id] = e.target.value
-
-        setData(dataBase)
-
+      console.log(email,password) 
+      let item={email, password};
       
-      console.log(dataBase)
-  }
+     axios
+      .get(url)
+      .then((res) => {
+        for (var i = res.data.length - 1; i >= 0; i--) {
+          if (email == res.data[i].email) {
+            console.log(res.data[i].name)
+            if (password == res.data[i].password) {
+              console.log(res.data[i].email)
+              localStorage.setItem("user-info", JSON.stringify(res.data[i]))
+              history.push("/")
+            }
+          }    
+        }
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
   useEffect(() => {
     console.log(dataErrors);
