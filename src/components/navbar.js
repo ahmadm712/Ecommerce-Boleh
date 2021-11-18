@@ -95,6 +95,7 @@ export default function Navbar() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  onClick={showHideCart}
                 >
                   <path
                     stroke-linecap="round"
@@ -105,10 +106,11 @@ export default function Navbar() {
                 </svg>
               {cartItems.length > 0 && (
                 <div className="item__count">
-                  <span>{cartItems.length}0</span>
-                  <h1></h1>
+                  <span>{cartItems.length}</span>
+                  
                 </div>
               )}
+              
             </div>
             </div>
             
