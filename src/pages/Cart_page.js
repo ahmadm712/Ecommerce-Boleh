@@ -1,6 +1,8 @@
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
+
+
 function CartPage(props) {
   const history = useHistory();
   return (
