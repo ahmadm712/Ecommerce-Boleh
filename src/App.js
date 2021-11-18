@@ -5,6 +5,7 @@ import NotFound from "./pages/404Page";
 import LoginPage from "./pages/Login_page";
 import RegisterPage from "./pages/Register_page";
 import TopupPage from "./pages/Topup_page";
+import ProfilePage from "./pages/Profile_page";
 import CartPage from "./pages/Cart_page";
 import SearchPage from "./pages/Search_page";
 import WishlistPage from "./pages/Wishlist_Page";
@@ -81,6 +82,13 @@ function App() {
           </Route>
           <Route path="/register">
             <RegisterPage />
+          </Route>
+
+          <Route path="/topup">
+            <TopupPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
           </Route>
           <Route path="*">
             <NotFound />

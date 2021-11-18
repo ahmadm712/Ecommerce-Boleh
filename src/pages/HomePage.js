@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> origin/ikhwan2
 import EGambar from "../assets/images/Ecommerce.png";
 import AppD from "../assets/images/AppD.png";
 import Navbar from "../components/navbar";
@@ -7,6 +11,8 @@ import CarouselComponent from "../components/carousel-card";
 import BannerComponent from "../components/banner";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Carousel from "react-multi-carousel";
+// import { data } from "autoprefixer";
 
 import Carousel from "react-multi-carousel";
 // import { data } from "autoprefixer";
