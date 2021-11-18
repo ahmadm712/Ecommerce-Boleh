@@ -59,24 +59,6 @@ export default function CarouselComponent() {
     // history.pushState(`detail_produk/${id}`);
   };
 
-  // const getProduk = async () => {
-  //   try {
-  //     const res = await axios.get(
-  //       "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
-  //     );
-  //     // console.log(res.data.product);
-  //     const p = await res.data.product;
-  //     // const jsonP = p.json()
-  //     // console.log(jsonP)
-  //     setdata(p);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getProduk();
-  // }, []);
 
   return (
     <Carousel responsive={responsive} itemClass="image-item">
@@ -109,7 +91,8 @@ export default function CarouselComponent() {
             <button
               className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
               onClick={(e) => {
-                e.preventDefault().addToCart(product);
+                e.preventDefault();
+                addToCart(product);
               }}
             >
               {" "}
@@ -124,14 +107,7 @@ export default function CarouselComponent() {
               Add To WishList
             </button>
 
-            {/* <button
-              className="w-full button h-8 bg-red-400 mt-4 text-white hover:bg-gray-800"
-              onClick={() => addToCart(product)}
-              data={product}
-            >
-              {" "}
-              Tambah ke Keranjang
-            </button> */}
+           
           </div>
         );
       })}
