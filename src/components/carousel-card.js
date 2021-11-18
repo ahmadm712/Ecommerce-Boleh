@@ -1,22 +1,38 @@
 import axios from "axios";
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 
-
-import {ProductContext} from '../context/product_context'
-import CartContext from '../context/cart/cart_context'
-
+import { ProductContext } from "../context/product_context";
+import CartContext from "../context/cart/cart_context";
 
 export default function CarouselComponent() {
   // const { addToCart } = useContext(CartContext);
-  const {addToCart} = useContext(CartContext)
+  const { addToCart } = useContext(CartContext);
 
-  const {product} =  useContext(ProductContext)
-  // const [data, setdata] = useState([]);
+  const { product } = useContext(ProductContext);
+
+  let user_login = JSON.parse(localStorage.getItem("user-info"));
+  const addToWishlist = (product_id) => {
+    // console.log(product_id);
+    const postWishlist = {
+      user_id: user_login.user_id,
+      product_id: product_id,
+    };
+    axios
+      .post(
+        `https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/favorite`,
+        postWishlist
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -43,24 +59,6 @@ export default function CarouselComponent() {
     // history.pushState(`detail_produk/${id}`);
   };
 
-  // const getProduk = async () => {
-  //   try {
-  //     const res = await axios.get(
-  //       "https://oleh-oleh-skilvul.000webhostapp.com/api/product"
-  //     );
-  //     // console.log(res.data.product);
-  //     const p = await res.data.product;
-  //     // const jsonP = p.json()
-  //     // console.log(jsonP)
-  //     setdata(p);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getProduk();
-  // }, []);
 
   return (
     <Carousel responsive={responsive} itemClass="image-item">
@@ -83,8 +81,7 @@ export default function CarouselComponent() {
             <button
               className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800"
               onClick={() => {
-                history.push(`detail_produk/${res.product_id}`
-                );
+                history.push(`detail_produk/${res.product_id}`);
               }}
               data={product}
             >
@@ -93,8 +90,10 @@ export default function CarouselComponent() {
             </button>
             <button
               className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
-              onClick={()=>addToCart(product)}
-              data={product}
+              onClick={(e) => {
+                e.preventDefault();
+                addToCart(product);
+              }}
             >
               {" "}
               Add To Cart
@@ -102,21 +101,13 @@ export default function CarouselComponent() {
 
             <button
               className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
-             
-              data={product}
+              onClick={(e) => addToWishlist(res.product_id)}
             >
               {" "}
               Add To WishList
             </button>
+
            
-            {/* <button
-              className="w-full button h-8 bg-red-400 mt-4 text-white hover:bg-gray-800"
-              onClick={() => addToCart(product)}
-              data={product}
-            >
-              {" "}
-              Tambah ke Keranjang
-            </button> */}
           </div>
         );
       })}

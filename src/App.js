@@ -1,10 +1,16 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch,useHistory } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/404Page";
 import LoginPage from "./pages/Login_page";
 import RegisterPage from "./pages/Register_page";
 import TopupPage from "./pages/Topup_page";
+import ProfilePage from "./pages/Profile_page";
 import CartPage from "./pages/Cart_page";
 import SearchPage from "./pages/Search_page";
 import WishlistPage from "./pages/Wishlist_Page";
@@ -16,6 +22,8 @@ import { useContext } from "react";
 import { CartContext } from "./components/cart";
 import { SearchBar } from "./components/searchBar";
 import { WishlistContext } from "./components/wishlist";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 function App() {
   const { product, cart } = useContext(CartContext);
@@ -40,6 +48,7 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/cart">
+            <Navbar />
             <div className="container mx-auto p-10">
               {product.map((e) => {
                 return <CartPage key={e.product_id} product={e} />;
@@ -48,6 +57,7 @@ function App() {
                 return <CartPage key={e.product_id} product={e} />;
               })} */}
             </div>
+            <Footer />
           </Route>
           <Route path="/search">
             <SearchPage />
@@ -56,6 +66,7 @@ function App() {
             <TopupPage />
           </Route>
           <Route path="/wishlist">
+            <Navbar />
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
               {wishlist.map((e) => {
                 return <WishlistPage key={e.product_id} wishlist={e} />;
@@ -69,10 +80,12 @@ function App() {
                 Keranjang
               </button>
             </div>
+            <Footer />
           </Route>
-          <Route path="/detail_produk/:id" component={DetailProductPage}>
-           
-          </Route>
+          <Route
+            path="/detail_produk/:id"
+            component={DetailProductPage}
+          ></Route>
           <Route path="/history_transaction">
             <HistoryTransactionPage />
           </Route>
@@ -81,6 +94,13 @@ function App() {
           </Route>
           <Route path="/register">
             <RegisterPage />
+          </Route>
+
+          <Route path="/topup">
+            <TopupPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
           </Route>
           <Route path="*">
             <NotFound />

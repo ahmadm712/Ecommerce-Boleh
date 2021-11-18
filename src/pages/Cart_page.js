@@ -1,8 +1,51 @@
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function CartPage(props) {
   const history = useHistory();
+
+  const dislike = (
+    <svg
+      version="1.0"
+      xmlns="http://www.w3.org/2000/svg"
+      width="50px"
+      height="50px"
+      viewBox="0 0 500 500"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g id="layer101" fill="#9CA3AF" stroke="none">
+        <path d="M167 389 c-81 -61 -119 -119 -119 -183 0 -52 13 -80 48 -102 31 -21 96 -21 127 -1 22 14 27 14 46 1 26 -19 101 -20 129 -3 46 29 65 103 42 163 -19 52 -158 176 -196 176 -5 0 -39 -23 -77 -51z m150 -33 c115 -87 138 -194 48 -232 -39 -16 -59 -11 -97 23 -26 25 -26 25 -37 5 -14 -26 -65 -44 -94 -33 -58 23 -76 91 -40 153 20 35 129 128 149 128 7 0 38 -20 71 -44z" />
+      </g>
+    </svg>
+  );
+  const like = (
+    <svg
+      version="1.0"
+      xmlns="http://www.w3.org/2000/svg"
+      width="48px"
+      height="48px"
+      viewBox="0 0 480 480"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g id="layer101" fill="#ff3d00" stroke="none">
+        <path d="M185 357 c-122 -103 -135 -120 -135 -171 0 -39 5 -53 29 -77 24 -23 38 -29 73 -29 24 0 54 7 66 16 20 14 24 14 44 0 12 -9 42 -16 66 -16 35 0 49 6 73 29 24 24 29 38 29 77 0 42 -4 51 -43 88 -46 44 -144 126 -149 125 -2 0 -25 -19 -53 -42z" />
+      </g>
+    </svg>
+  );
+
+  let initialState = false;
+  if (props.product.product_favorite_status == 0) {
+    initialState = false;
+  }
+  if (props.product.product_favorite_status == 1) {
+    initialState = true;
+  }
+
+  const [switchToggled, setSwitchToggled] = useState(initialState);
+  const ToggleSwitch = () => {
+    switchToggled ? setSwitchToggled(false) : setSwitchToggled(true);
+  };
   return (
     <>
       <div className="flex my-4">
@@ -20,24 +63,13 @@ function CartPage(props) {
               Rp {props.product.product_price}
             </div>
           </div>
-          <div className="flex flex-col justify-between p-4">
-            <div className="flex justify-end pr-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-10 w-10"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                />
-              </svg>
+          <div className="flex flex-col justify-between p-4 relative">
+            <div className="absolute top-0 right-0 pr-4">
+              <Link to="/cart">
+                <i onClick={ToggleSwitch}> {switchToggled ? like : dislike}</i>
+              </Link>
             </div>
-            <div className="flex flex-row ">
+            <div className="flex flex-row absolute bottom-0 pb-4">
               <Link to="/cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -96,49 +128,6 @@ function CartPage(props) {
           </div>
         </div>
       </div>
-
-      {/* <div class="p-10">
-        <div class=" w-full lg:max-w-full lg:flex">
-          <div
-            class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-            style="background-image: url('/mountain.jpg')"
-            title="Mountain"
-          ></div>
-          <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8">
-              <p class="text-sm text-gray-600 flex items-center">
-                <svg
-                  class="fill-current text-gray-500 w-3 h-3 mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                </svg>
-                Members only
-              </p>
-              <div class="text-gray-900 font-bold text-xl mb-2">
-                Best Mountain Trails 2020
-              </div>
-              <p class="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
-              </p>
-            </div>
-            <div class="flex items-center">
-              <img
-                class="w-10 h-10 rounded-full mr-4"
-                src="/ben.png"
-                alt="Avatar of Writer"
-              />
-              <div class="text-sm">
-                <p class="text-gray-900 leading-none">John Smith</p>
-                <p class="text-gray-600">Aug 18</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

@@ -24,7 +24,7 @@ export function UserProvider({ children }) {
     const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user";
     axios
       .get(url)
-      .then((response) => response.data.user)
+      .then((response) => response.data)
       .then((data) => data.map(createNewUser))
       .then(setUser);
   }, []);

@@ -89,7 +89,7 @@ export default function Navbar() {
                 Keranjang
               </Link>
               <div className="cart__icon">
-              <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
                   fill="none"
@@ -104,16 +104,14 @@ export default function Navbar() {
                     d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                   />
                 </svg>
-              {cartItems.length > 0 && (
-                <div className="item__count">
-                  <span>{cartItems.length}</span>
-                  
-                </div>
-              )}
-              
+                {cartItems.length > 0 && (
+                  <div className="item__count">
+                    <span>{cartItems.length}</span>
+                    <h1></h1>
+                  </div>
+                )}
+              </div>
             </div>
-            </div>
-            
 
             <div class="md:hidden flex items-center">
               <button class="outline-none mobile-menu-button">

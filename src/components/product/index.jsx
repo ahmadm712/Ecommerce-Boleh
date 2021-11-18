@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useHistory } from "react-router";
+
 
 const ProductContainer = styled.div`
   width: 100%;
@@ -8,6 +10,10 @@ const ProductContainer = styled.div`
   border-bottom: 2px solid #d8d8d852;
   padding: 6px 8px;
   align-items: center;
+  cursor: pointer;
+  &:hover{
+    background-color:lightblue;
+  }
 `;
 
 const Thumbnail = styled.div`
@@ -36,10 +42,12 @@ const Name = styled.h3`
 `;
 
 export  function ProductShows(props) {
-   
+  const history = useHistory();
     return (
-        <ProductContainer>
-            <Thumbnail>
+        <ProductContainer onClick={() => {
+          history.push(`detail_produk/${props.product_id}`);
+        }}>
+            <Thumbnail >
                 <img src={props.image} />
             </Thumbnail>
             <Name>{props.name}</Name>
