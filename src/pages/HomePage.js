@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useContext, useEffect, useState } from "react";
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> origin/ikhwan2
 import EGambar from "../assets/images/Ecommerce.png";
 import AppD from "../assets/images/AppD.png";
 import Navbar from "../components/navbar";
@@ -11,14 +7,12 @@ import CarouselComponent from "../components/carousel-card";
 import BannerComponent from "../components/banner";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
-// import { data } from "autoprefixer";
-
+import CartContext from "../context/cart/cart_context";
 import Carousel from "react-multi-carousel";
 // import { data } from "autoprefixer";
 
 export default function HomePage() {
-
+  const { addToCart } = useContext(CartContext);
   const dataProduct = [
     {
       mal_id: 5114,
@@ -118,17 +112,16 @@ export default function HomePage() {
 
   //logout
   const handleLogout = () => {
-    localStorage.removeItem('user-info')
+    localStorage.removeItem("user-info");
     history.push("/login");
   };
 
-
   //user login
   if (localStorage.getItem("user-info") !== null) {
-    let user_login = JSON.parse(localStorage.getItem('user-info'));
+    let user_login = JSON.parse(localStorage.getItem("user-info"));
     console.log(user_login.name);
     console.log(user_login.saldo);
-  }else{
+  } else {
     console.log("belum login");
   }
 

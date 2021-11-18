@@ -7,6 +7,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import { useDebounce } from '../../hooks/debounceHook';
 import axios from 'axios';
 import { ProductShows } from '../product';
+import { useHistory } from "react-router";
 
 const WarningMessage = styled.span`
   color: #a1a1a1;
@@ -121,6 +122,7 @@ export default function SearchBar(props) {
     const [noProductShow, setNoProductShow] = useState(false);
 
     const isEmpty = !productShow || productShow.length === 0;
+    const history = useHistory();
 
     const chageHandle = (e) => {
       e.preventDefault();
@@ -177,13 +179,14 @@ export default function SearchBar(props) {
 
 
       useDebounce(searchQuery, 500, searchProduct)
-      console.log("value : ", searchQuery)
+      // console.log("value : ", searchQuery)
 
     return(
     <SearchBarContainer 
       animate={isExpanded ? "expanded" : "collapsed"} variants={containerVariants} 
       transition={containerTransition}
       ref={parentRef} 
+      
     >
         <SearchInputContainer>
             <SearchIcon>
@@ -234,16 +237,17 @@ export default function SearchBar(props) {
                 </LoadingWrapper>
               )}
             {!isLoading && !isEmpty && (
-            <>
+            <div>
               {productShow.map(( product ) => (
-                <ProductShows
+                <ProductShows 
                   key={product.product_id}
+                  product_id={product.product_id}
                   image={product.product_image}
                   name={product.product_name}
                   price={product.product_price}
                 />
               ))}
-            </>
+            </div>
           )}
         </SearchContent>
       )}
