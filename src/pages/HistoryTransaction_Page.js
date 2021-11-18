@@ -50,7 +50,8 @@ function HistoryTransactionPage() {
                 <button className="button-big bg-red-500 :hover:bg-green-600 text-white rounded-lg text-center w-full p-2">
                   Belum Konfirmasi
                 </button>
-              )}
+              )
+              }
             </div>
           </div>
         </div>

@@ -1,8 +1,9 @@
 import { data } from "autoprefixer";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Data from "../data/dummy-data";
+import axios from "axios";
 
 function CheckOutPage() {
   const user = [
@@ -23,8 +24,24 @@ function CheckOutPage() {
     },
   ];
 
+  let user_login = JSON.parse(localStorage.getItem("user-info"));
+  console.log(user_login.name);
+
+  const url = `https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user/${user_login.user_id}`;
+
+  const axios = require("axios").default;
+  const [data, setData] = useState({
+    name: user_login.name,
+    email: user_login.email,
+    password: user_login.password,
+    image: user_login.image,
+    address: user_login.address,
+    phone: user_login.phone,
+  });
+
+
   return (
-    <div className='h-full w-full'>
+    <div className="h-full w-full">
       <Navbar />
       <div className="container mx-auto">
         <h1 className="font-bold">Checkout</h1>
@@ -33,9 +50,9 @@ function CheckOutPage() {
             <div className="box-content h-1/4 w-auto p-3 border-2">
               <h1 className="font-semibold">Rumah</h1>
               <p className="font-light font-normal">
-                {user[0].name} ({user[0].phone})
+                {data.email} ({data.phone})
               </p>
-              <p className="font-light font-normal">{user[0].address}</p>
+              <p className="font-light font-normal">{data.address}</p>
             </div>
             <div className="box-content h-2/4 w-auto p-3 border-2 mt-3">
               <h1>Total Pesanan (1 items)</h1>
@@ -90,18 +107,17 @@ function CheckOutPage() {
                     <h1>Biaya Ongkir</h1>
                   </div>
                 </div>
-                <div className='flex'>
-                    <h1>Rp : 16.000</h1>
+                <div className="flex">
+                  <h1>Rp : 16.000</h1>
                 </div>
               </div>
 
               <div className="flex justify-between">
                 <h1>Total Pembayaran</h1>
-                <h1>Rp : 116.000</h1>   
+                <h1>Rp : 116.000</h1>
               </div>
               <br />
             </div>
-
 
             <div>
               <h1 className="font-semibold text-lg">Metode Pembayaran</h1>

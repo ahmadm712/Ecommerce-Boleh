@@ -6,10 +6,6 @@ import CartContext from "../context/cart/cart_context";
 
 export default function Navbar() {
   const { cartItems, showHideCart } = useContext(CartContext);
-  // const history = useHistory();
-  // const handleClick = () => {
-  //   history.push("/search");
-  // };
   return (
     <>
       <nav class="bg-primary-200 shadow-lg mb-2 h-16 ">
@@ -17,7 +13,7 @@ export default function Navbar() {
           <div class="flex justify-between">
             <div class="flex space-x-7">
               <div>
-                <Link to="/" class="flex items-center py-4 px-2">
+                <Link to="/" class="flex items-center py-4 px-2 text-2xl font-bold font-heading">
                   <img src={Logo} alt="Logo" class="h-8 w-h-8" />
                   <span class="font-semibold text-white text-lg">OLEH</span>
                 </Link>
