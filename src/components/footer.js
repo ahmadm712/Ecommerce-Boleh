@@ -29,7 +29,7 @@ export default function Footer() {
             </div>
 
             <div className="mt-6 lg:mt-0 ">
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-2 flex justify-between">
+              <div className="grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-2 flex justify-between">
                 <div>
                   <h3 className="text-gray-800 uppercase dark:text-white">
                     Fitur Kami
@@ -61,7 +61,7 @@ export default function Footer() {
                     +1 526 654 8965
                   </span>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                    example@email.com
+                    example
                   </span>
                 </div>
               </div>

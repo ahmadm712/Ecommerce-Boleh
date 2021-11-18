@@ -2,7 +2,6 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-
 export default function BannerComponent(props) {
   const responsive = {
     superLargeDesktop: {
@@ -47,8 +46,8 @@ export default function BannerComponent(props) {
       <Carousel
         responsive={responsive}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-        
+        itemClass="carousel-item"
+        className='w-4/6 mx-auto'
       >
         {products.map((res) => {
           return (
@@ -56,7 +55,7 @@ export default function BannerComponent(props) {
               <img
                 src={res.image}
                 alt=""
-                className="rounded-lg h-80 object-fill mx-auto"
+                className="rounded-lg h-96 w-full  mx-auto"
               />
             </div>
           );
