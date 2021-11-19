@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 
 import { useHistory } from "react-router-dom";
-import Logo from "../assets/images/Sale.png";
+import Logo from "../assets/images/Shopping.png";
 import Logo2 from "../assets/images/logo2.png";
 
 function LoginPage() {
@@ -47,9 +47,9 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen flex justify-around px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
-      <div>
+      <div className='max-w-7xl h-full flex justify-center'>
         <img
-          className="max-w-2xl max-w-7xl mx-auto  mt-4 flex spa"
+          className="max-w-3xl mx-auto  mt-4 flex spa"
           src={Logo}
           alt="Logo"
         />
