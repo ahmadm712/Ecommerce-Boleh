@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
   useHistory,
+  Link
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/404Page";
@@ -53,9 +54,17 @@ function App() {
               {product.map((e) => {
                 return <CartPage key={e.product_id} product={e} />;
               })}
-              {/* {cart.map((e) => {
-                return <CartPage key={e.product_id} product={e} />;
-              })} */}
+              <div className='w-96 mx-auto'>
+              <div className='w-3/5'>
+              <Link className="w-96 h-10 rounded-lg bg-blue-400 text-white mx-auto hover:bg-gray-800 flex justify-center text-center"
+                to='/checkout'
+                
+                >
+                  Check out
+                </Link>
+              </div>
+                
+              </div>
             </div>
             <Footer />
           </Route>
@@ -72,14 +81,7 @@ function App() {
                 return <WishlistPage key={e.product_id} wishlist={e} />;
               })}
             </div>
-            <div className="grid justify-items-center">
-              <button
-                className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-                onClick={handleWishlist}
-              >
-                Keranjang
-              </button>
-            </div>
+
             <Footer />
           </Route>
           <Route

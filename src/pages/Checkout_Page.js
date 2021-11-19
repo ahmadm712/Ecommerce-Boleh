@@ -6,23 +6,7 @@ import Data from "../data/dummy-data";
 import axios from "axios";
 
 function CheckOutPage() {
-  const user = [
-    {
-      user_id: 1,
-      name: "ahmad",
-      email: "ahmad@gmail.com",
-      email_verified_at: null,
-      password: "12345678",
-      image: "ahmad",
-      saldo: "100000",
-      address: "Majalengka",
-      phone: "08",
-      role: null,
-      remember_token: null,
-      created_at: null,
-      updated_at: null,
-    },
-  ];
+
 
   let user_login = JSON.parse(localStorage.getItem("user-info"));
   console.log(user_login.name);
@@ -124,7 +108,7 @@ function CheckOutPage() {
               <div className="box-content h-full w-full border-2 flex justify-between">
                 <div className="px-2">
                   <h1 className="font-bold">Saldo</h1>
-                  <h1>RP : 200000</h1>
+                  <h1>RP : {user_login.saldo}</h1>
                 </div>
                 <div className="mx-3 my-3 h-4 w-4">
                   <input type="radio" />

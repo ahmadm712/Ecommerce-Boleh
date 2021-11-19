@@ -126,8 +126,10 @@ function CartPage(props) {
               </div>
             </div>
           </div>
+
         </div>
       </div>
+      
     </>
   );
 }
