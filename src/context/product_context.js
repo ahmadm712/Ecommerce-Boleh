@@ -43,9 +43,8 @@ export function ProductProvider({ children }) {
       .then((data) => data.map(createNewProduct))
       .then(setProduct);
   }, []);
-
   const contextValue = {
-    product: product.slice(0, 5),
+    product: product,
   };
 
   // console.log("Context", contextValue);

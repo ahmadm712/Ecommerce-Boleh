@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo2.png";
 import SearchBar from "./searchBar";
 import CartContext from "../context/cart/cart_context";
+import { useHistory } from "react-router";
 
 export default function Navbar() {
   const { cartItems, showHideCart } = useContext(CartContext);
+  const history = useHistory();
   // const history = useHistory();
-  // const handleClick = () => {
-  //   history.push("/search");
-  // };
+  const handleClickCart = () => {
+    history.push("/cart");
+  };
+  const handleClickWishlist = () => {
+    history.push("/wishlist");
+  };
   return (
     <>
       <nav class="bg-primary-200 shadow-lg mb-2 h-16 ">
@@ -27,8 +32,8 @@ export default function Navbar() {
               <SearchBar />
             </div>
             <div class="hidden md:flex items-center space-x-3 h-12">
-              <Link
-                to="/wishlist"
+              <div
+                onClick={handleClickWishlist}
                 class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"
               >
                 <svg
@@ -43,7 +48,7 @@ export default function Navbar() {
                     clip-rule="evenodd"
                   />
                 </svg>
-              </Link>
+              </div>
               <Link
                 to="/history_transaction"
                 class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"
@@ -82,14 +87,11 @@ export default function Navbar() {
                 </svg>
               </Link>
 
-              <Link
-                to="/cart"
-                class="py-2 px-2 font-medium text-white bg-primary-100 rounded hover:bg-primary-100 transition duration-300"
+              <div
+                onClick={handleClickCart}
+                class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"
               >
-                Keranjang
-              </Link>
-              <div className="cart__icon">
-              <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
                   fill="none"
@@ -100,18 +102,11 @@ export default function Navbar() {
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-              {cartItems.length > 0 && (
-                <div className="item__count">
-                  <span>{cartItems.length}0</span>
-                  <h1></h1>
-                </div>
-              )}
+              </div>
             </div>
-            </div>
-            
 
             <div class="md:hidden flex items-center">
               <button class="outline-none mobile-menu-button">

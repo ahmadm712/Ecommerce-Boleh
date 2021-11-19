@@ -19,21 +19,45 @@ import HistoryTransactionPage from "./pages/HistoryTransaction_Page";
 import React from "react";
 import { useContext } from "react";
 import { CartContext } from "./components/cart";
-import { SearchBar } from "./components/searchBar";
 import { WishlistContext } from "./components/wishlist";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { useState } from "react";
 
 function App() {
-  const { product, cart } = useContext(CartContext);
+  const { product } = useContext(CartContext);
   const { wishlist } = useContext(WishlistContext);
-  const history = useHistory();
 
-  const handleCart = () => {
-    history.push("/checkout");
+  const [cartItems, setCartItems] = useState([]);
+  const onAdd = (product) => {
+    const exist = cartItems.find((x) => x.product_id === product.product_id);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.product_id === product.product_id
+            ? { ...exist, qty: exist.qty + 1 }
+            : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
   };
-  const handleWishlist = () => {
-    history.push("/cart");
+  const onRemove = (product) => {
+    const exist = cartItems.find((x) => x.product_id === product.product_id);
+    if (exist.qty === 1) {
+      setCartItems(
+        cartItems.filter((x) => x.product_id !== product.product_id)
+      );
+    } else {
+      setCartItems(
+        cartItems.map((x) =>
+          x.product_id === product.product_id
+            ? { ...exist, qty: exist.qty - 1 }
+            : x
+        )
+      );
+    }
   };
 
   return (
@@ -52,9 +76,6 @@ function App() {
               {product.map((e) => {
                 return <CartPage key={e.product_id} product={e} />;
               })}
-              {/* {cart.map((e) => {
-                return <CartPage key={e.product_id} product={e} />;
-              })} */}
             </div>
             <Footer />
           </Route>
@@ -67,14 +88,6 @@ function App() {
               {wishlist.map((e) => {
                 return <WishlistPage key={e.product_id} wishlist={e} />;
               })}
-            </div>
-            <div className="grid justify-items-center">
-              <button
-                className="bg-green-500  text-white font-bold py-2 px-4 rounded"
-                onClick={handleWishlist}
-              >
-                Keranjang
-              </button>
             </div>
             <Footer />
           </Route>
@@ -99,5 +112,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

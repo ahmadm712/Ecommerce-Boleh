@@ -19,16 +19,24 @@ export function WishlistProvider({ children }) {
       axios.spread((...allData) => {
         const getDataProduct = allData[0].data.product;
         const getDataWishlist = allData[1].data;
-        const whislitId = getDataWishlist.map((e) => {
-          return e.product_id;
-        });
+        let user_login = JSON.parse(localStorage.getItem("user-info"));
+        // console.log(getDataWishlist);
+        // console.log(wishlistUserId == user_login.user_id);
+
         // check id
-        for (let i = 0; i < whislitId.length; i++) {
-          const findId = getDataProduct.find(
-            ({ product_id }) => product_id == whislitId[i]
-          );
-          defaultValue.push(findId);
+        for (let i = 0; i < getDataWishlist.length; i++) {
+          if (getDataWishlist[i].user_id == user_login.user_id) {
+            for (let j = 0; j < getDataProduct.length; j++) {
+              if (
+                getDataProduct[j].product_id == getDataWishlist[i].product_id
+              ) {
+                defaultValue.push(getDataProduct[j]);
+                // defaultValue.push(getDataWishlist[i].favorite_id);
+              }
+            }
+          }
         }
+        // console.log(defaultValue);
         setWishlist(defaultValue);
       })
     );

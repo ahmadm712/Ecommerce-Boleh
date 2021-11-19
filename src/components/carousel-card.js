@@ -8,14 +8,33 @@ import { Link } from "react-router-dom";
 
 import { ProductContext } from "../context/product_context";
 import CartContext from "../context/cart/cart_context";
+import Navbar from "./navbar";
 
 export default function CarouselComponent() {
   // const { addToCart } = useContext(CartContext);
-  const { addToCart } = useContext(CartContext);
+  // const { addToCart } = useContext(CartContext);
 
   const { product } = useContext(ProductContext);
 
   let user_login = JSON.parse(localStorage.getItem("user-info"));
+
+  const addToCart = (product_id) => {
+    // console.log(product_id);
+    const postCart = {
+      user_id: user_login.user_id,
+      product_id: product_id,
+    };
+    axios
+      .post(
+        `https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/cart`,
+        postCart
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+
   const addToWishlist = (product_id) => {
     // console.log(product_id);
     const postWishlist = {
@@ -109,7 +128,7 @@ export default function CarouselComponent() {
             <button
               className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
               onClick={(e) => {
-                e.preventDefault().addToCart(product);
+                addToCart(res.product_id);
               }}
             >
               {" "}
