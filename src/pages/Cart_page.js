@@ -8,6 +8,11 @@ function CartPage() {
   let url = `https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/cart`;
   const history = useHistory();
 
+
+  function HandleCheckout() {
+    history.push('/checkout')
+  }
+
   let user_login = JSON.parse(localStorage.getItem("user-info"));
   //define state
   const [posts, setPosts] = useState([]);
@@ -17,15 +22,15 @@ function CartPage() {
     //panggil method "fetchData"
     fectData();
     let user_checkout = 0;
-        axios
+    axios
       .get(url)
       .then((res) => {
-       for (var i = res.data.length - 1; i >= 0; i--) {
-        if (res.data[i].user_id == user_login.user_id) {
-          user_checkout += parseInt(res.data[i].cart_total);
+        for (var i = res.data.length - 1; i >= 0; i--) {
+          if (res.data[i].user_id == user_login.user_id) {
+            user_checkout += parseInt(res.data[i].cart_total);
+          }
         }
-       }
-       localStorage.setItem("user-checkout", user_checkout);
+        localStorage.setItem("user-checkout", user_checkout);
       })
       .catch((error) => {
         console.log(error);
@@ -91,12 +96,12 @@ function CartPage() {
   return (
     <div>
       <Navbar />
-      {posts.map((post, index) => (
-        <div>
-          <div>
-            {post.user_id == user_login.user_id && (
-              <div className="box-content h-full w-3/4 mx-auto border-2 p-4 my-10">
-                <div className="flex justify-between">
+      <div className="box-content h-full w-3/4 mx-auto border-2 p-4 my-10">
+        <div className="flex justify-around">
+          {posts.map((post, index) => (
+            <>
+              {post.user_id == user_login.user_id && (
+                <div>
                   <div>
                     <h1 className="font-semibold text-lg">
                       {post.product_name}
@@ -158,11 +163,20 @@ function CartPage() {
                   </div>
                   <div></div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </>
+          ))}
         </div>
-      ))}
+        <div className='mx-auto flex mt-10'>
+          <button
+            className="w-40 px-4 mx-auto py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+            type="submit"
+            onClick={HandleCheckout}
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
       <Footer />
     </div>
   );

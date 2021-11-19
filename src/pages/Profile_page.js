@@ -7,6 +7,7 @@ import CarouselComponent from "../components/carousel-card";
 import BannerComponent from "../components/banner";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 function ProfilePage() {
 	let user_login = JSON.parse(localStorage.getItem('user-info'));
@@ -46,6 +47,13 @@ function ProfilePage() {
 			.then(res => {
 				console.log(res.data)
 				localStorage.setItem("user-info", JSON.stringify(res.data))
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Update Profil Succes',
+          showConfirmButton: false,
+          timer: 1000
+        })
 				history.push("/profile")
 			})
 

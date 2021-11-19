@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 
 import { useHistory } from "react-router-dom";
 import Logo from "../assets/images/Sale.png";
@@ -26,6 +28,13 @@ function LoginPage() {
             if (password == res.data[i].password) {
               console.log(res.data[i].email);
               localStorage.setItem("user-info", JSON.stringify(res.data[i]));
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Succes',
+                showConfirmButton: false,
+                timer: 1000
+              })
               history.push("/");
             }
           }

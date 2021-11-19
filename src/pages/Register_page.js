@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Logo from "../assets/images/Sale.png";
 import Logo2 from "../assets/images/logo2.png";
+import Swal from "sweetalert2";
+
 
 export default function RegisterPage() {
   const url = "https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/user"
@@ -35,6 +37,13 @@ const history = useHistory();
     })
     .then(res => {
       console.log(res.data)
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Register Succes',
+        showConfirmButton: false,
+        timer: 1000
+      })
       history.push("/login");
     })
   }
