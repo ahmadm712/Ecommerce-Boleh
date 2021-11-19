@@ -1,4 +1,5 @@
 # Boleh App
+<img src="https://i.ibb.co/59MJgsH/logo2.png"/>
 
 This project was deploy on https://ecommerce-boleh.vercel.app/
 
