@@ -93,17 +93,7 @@ function LoginPage() {
               />
             </div>
 
-            <div class="mb-4">
-              <input
-                className="mr-2 leading-tight"
-                type="checkbox"
-                id="checkbox_id"
-              />
-              <label className="text-sm" for="checkbox_id">
-                Remember Me
-              </label>
-            </div>
-
+            
             <div class="mb-6 text-center">
               <button
                 onClick={login}
@@ -114,14 +104,7 @@ function LoginPage() {
               </button>
             </div>
 
-            <div className="text-center">
-              <a
-                className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                href="./forgot-password.html"
-              >
-                Forgot your Password?
-              </a>
-            </div>
+          
 
             <div className="text-center flex justify-evenly">
               <p className="inline-block text-sm text-black-500 align-baseline">

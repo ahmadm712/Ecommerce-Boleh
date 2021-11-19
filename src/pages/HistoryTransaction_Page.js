@@ -3,7 +3,6 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import axios from "axios";
 
-
 function HistoryTransactionPage() {
   let url = `https://6191168c41928b001768ff36.mockapi.io/api/boleh/transaction_history`;
   //define state

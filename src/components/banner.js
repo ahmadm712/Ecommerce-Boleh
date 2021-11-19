@@ -25,20 +25,16 @@ export default function BannerComponent(props) {
 
   const products = [
     {
-      image: "https://mdbootstrap.com/img/new/slides/052.jpg",
+      image: "https://i.ibb.co/6m02Bdc/boleh-banner1.png",
       price: "Rp 200000",
       productName: "Hat",
     },
     {
-      image: "https://mdbootstrap.com/img/new/slides/052.jpg",
+      image: "https://i.ibb.co/WGCQpM5/boleh-netlify-app-1.png",
       price: "Rp 300000",
       productName: "Shirt",
     },
-    {
-      image: "https://mdbootstrap.com/img/new/slides/052.jpg",
-      price: "Rp 300000",
-      productName: "Jeans",
-    },
+    
   ];
 
   return (
