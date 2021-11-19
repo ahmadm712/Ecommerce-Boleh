@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import detail from "../components/detail-product";
+import detail from "../../components/detail-product";
 
 // "product_id": 12,
 //             "product_name": "Nopia",
@@ -44,7 +44,11 @@ export function ProductProvider({ children }) {
       .then(setProduct);
   }, []);
   const contextValue = {
+<<<<<<< HEAD:src/context/product_context.js
     product: product,
+=======
+    product: product.slice(0, 15),
+>>>>>>> efcbe06752d64d42b7ae31ebb9322e316b9ea14b:src/data/context/product_context.js
   };
 
   // console.log("Context", contextValue);

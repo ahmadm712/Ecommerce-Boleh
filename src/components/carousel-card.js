@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { useParams, Redirect, useHistory, Link } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
 
+<<<<<<< HEAD
 import { ProductContext } from "../context/product_context";
 import CartContext from "../context/cart/cart_context";
 import Navbar from "./navbar";
@@ -14,7 +14,14 @@ export default function CarouselComponent() {
   // const { addToCart } = useContext(CartContext);
   // const { addToCart } = useContext(CartContext);
 
+=======
+import { ProductContext } from "../data/context/product_context";
+import CartContext from "../data/context/cart/cart_context";
+
+export default function CarouselComponent() {
+>>>>>>> efcbe06752d64d42b7ae31ebb9322e316b9ea14b
   const { product } = useContext(ProductContext);
+  const history = useHistory();
 
   let user_login = JSON.parse(localStorage.getItem("user-info"));
 
@@ -50,6 +57,33 @@ export default function CarouselComponent() {
         console.log(res);
         console.log(res.data);
       });
+
+    window.location.reload();
+  };
+
+  const addToCart = (
+    product_id,
+    product_price,
+    product_name,
+    product_image
+  ) => {
+    axios
+      .post(`https://618f2ab250e24d0017ce1649.mockapi.io/api/boleh/cart`, {
+        user_id: user_login.user_id,
+        product_id: product_id,
+        cart_amount: 1,
+        cart_total: parseInt(product_price),
+        product_name: product_name,
+        product_image: product_image,
+        product_price: product_price,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+
+    history.push("/cart");
+
   };
 
   const responsive = {
@@ -71,8 +105,6 @@ export default function CarouselComponent() {
       items: 1,
     },
   };
-
-  const history = useHistory();
 
   const handleKlik = (id) => {
     // history.pushState(`detail_produk/${id}`);
@@ -125,6 +157,7 @@ export default function CarouselComponent() {
               {" "}
               Detail
             </button>
+<<<<<<< HEAD
             <button
               className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
               onClick={(e) => {
@@ -143,6 +176,33 @@ export default function CarouselComponent() {
               Add To WishList
             </button>
 
+=======
+            {localStorage.getItem("user-info") !== null && (
+              <button
+                className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
+                onClick={(e) =>
+                  addToCart(
+                    res.product_id,
+                    res.product_price,
+                    res.product_name,
+                    res.product_image
+                  )
+                }
+              >
+                {" "}
+                Add To Cart
+              </button>
+            )}
+            {localStorage.getItem("user-info") !== null && (
+              <button
+                className="w-full button h-8 bg-gray-400 text-white hover:bg-gray-800 mt-3"
+                onClick={(e) => addToWishlist(res.product_id)}
+              >
+                {" "}
+                Add To WishList
+              </button>
+            )}
+>>>>>>> efcbe06752d64d42b7ae31ebb9322e316b9ea14b
             {/* <button
               className="w-full button h-8 bg-red-400 mt-4 text-white hover:bg-gray-800"
               onClick={() => addToCart(product)}

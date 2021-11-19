@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 
 import { useHistory } from "react-router-dom";
-import Logo from "../assets/images/Sale.png";
+import Logo from "../assets/images/Shopping.png";
 import Logo2 from "../assets/images/logo2.png";
 
 function LoginPage() {
@@ -26,6 +28,13 @@ function LoginPage() {
             if (password == res.data[i].password) {
               console.log(res.data[i].email);
               localStorage.setItem("user-info", JSON.stringify(res.data[i]));
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Succes',
+                showConfirmButton: false,
+                timer: 1000
+              })
               history.push("/");
             }
           }
@@ -38,9 +47,9 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen flex justify-around px-54 py-24 bg-gradient-to-r from-primary-100 to-gray-50">
-      <div>
+      <div className='max-w-7xl h-full flex justify-center'>
         <img
-          className="max-w-2xl max-w-7xl mx-auto  mt-4 flex spa"
+          className="max-w-3xl mx-auto  mt-4 flex spa"
           src={Logo}
           alt="Logo"
         />
@@ -93,17 +102,7 @@ function LoginPage() {
               />
             </div>
 
-            <div class="mb-4">
-              <input
-                className="mr-2 leading-tight"
-                type="checkbox"
-                id="checkbox_id"
-              />
-              <label className="text-sm" for="checkbox_id">
-                Remember Me
-              </label>
-            </div>
-
+            
             <div class="mb-6 text-center">
               <button
                 onClick={login}
@@ -114,14 +113,7 @@ function LoginPage() {
               </button>
             </div>
 
-            <div className="text-center">
-              <a
-                className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                href="./forgot-password.html"
-              >
-                Forgot your Password?
-              </a>
-            </div>
+          
 
             <div className="text-center flex justify-evenly">
               <p className="inline-block text-sm text-black-500 align-baseline">

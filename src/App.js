@@ -4,12 +4,14 @@ import {
   Route,
   Switch,
   useHistory,
+  Link
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/404Page";
 import LoginPage from "./pages/Login_page";
 import RegisterPage from "./pages/Register_page";
 import TopupPage from "./pages/Topup_page";
+import ProfilePage from "./pages/Profile_page";
 import CartPage from "./pages/Cart_page";
 import SearchPage from "./pages/Search_page";
 import WishlistPage from "./pages/Wishlist_Page";
@@ -71,6 +73,7 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/cart">
+<<<<<<< HEAD
             <Navbar />
             <div className="container mx-auto p-10">
               {product.map((e) => {
@@ -78,9 +81,15 @@ function App() {
               })}
             </div>
             <Footer />
+=======
+            <CartPage />
+>>>>>>> efcbe06752d64d42b7ae31ebb9322e316b9ea14b
           </Route>
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route path="/topup">
+            <TopupPage />
           </Route>
           <Route path="/wishlist">
             <Navbar />
@@ -89,6 +98,10 @@ function App() {
                 return <WishlistPage key={e.product_id} wishlist={e} />;
               })}
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> efcbe06752d64d42b7ae31ebb9322e316b9ea14b
             <Footer />
           </Route>
           <Route
@@ -103,6 +116,13 @@ function App() {
           </Route>
           <Route path="/register">
             <RegisterPage />
+          </Route>
+
+          <Route path="/topup">
+            <TopupPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
           </Route>
           <Route path="*">
             <NotFound />

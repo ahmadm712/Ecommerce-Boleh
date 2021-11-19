@@ -10,7 +10,7 @@ import { ProductShows } from '../product';
 import { useHistory } from "react-router";
 
 const WarningMessage = styled.span`
-  color: #a1a1a1;
+  color: white;
   font-size: 14px;
   display: flex;
   align-self:center;
@@ -22,7 +22,7 @@ const SearchBarContainer = styled(motion.div)`
     flex-direction: column;
     width: 30em;
     height: 2em;
-    background-color: #fff;
+    background-color:#c97d60;
     border-radius: 6px;
     box-shadow: 0px 2px 5px 3px rgba(0, 0 ,0.14);
 
@@ -44,7 +44,7 @@ const SearchInput = styled.input`
   outline: none;
   border: none;
   font-size: 17px;
-  color: #12112e;
+  color: white;
   font-weight: 500;
   border-radius: 6px;
   background-color: transparent;
@@ -55,13 +55,13 @@ const SearchInput = styled.input`
     }
   }
   &::placeholder {
-    color: #bebebe;
+    color: white;
     transition: all 250ms ease-in-out;
   }
 `;
 
 const SearchIcon = styled.span`
-  color: #bebebe;
+  color: white;
   font-size: 20px;
   margin-right: 10px;
   margin-top: 2px;
@@ -93,7 +93,7 @@ const LineSeperator = styled.span`
   display: flex;
   min-width: 100%;
   min-height: 2px;
-  background-color: #d8d8d878;
+  background-color: white;
 `;
 
 const SearchContent = styled.div`

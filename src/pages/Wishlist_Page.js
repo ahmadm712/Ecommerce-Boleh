@@ -23,8 +23,8 @@ function WishlistPage(props) {
   };
   return (
     <>
-      <div className="container">
-        <div className="w-4/6 h-55 border relative">
+      <div className="container w-full mx-auto">
+        <div className="w-3/6 h-55 border relative mx-auto">
           <img
             className="w-full rounded-md h-full"
             src={props.wishlist.product_image}
