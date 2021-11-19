@@ -4,29 +4,53 @@ import { ProductContext } from "../context/product_context";
 import CardContext from "../context/cart/cart_context";
 
 export default function DetailProduct() {
-  const { product } = useContext(ProductContext);
-  const { addToCart } = useContext(CardContext);
 
-  // console.log(props.match.params);
-  // Variable berikut akan menampung product movie yang akan kita tampilkan
-  const { id } = useParams();
-  console.log(id);
-  const products = product.find(
-    (dataFind) => dataFind.product_id === Number(id)
-  );
+  const { product } = useContext(ProductContext)
+  const { addToCart } = useContext(CardContext)
+  
+  
+    // console.log(props.match.params);
+    // Variable berikut akan menampung product movie yang akan kita tampilkan
+    const { id } = useParams();
+    console.log(id);
+    const products = product.find((dataFind) => dataFind.product_id === Number(id));
 
-  return (
-    <div className="text-gray-700 body-font overflow-hidden bg-white">
-      <div
-        className="container px-5 py-12 mx-auto flex justify-between"
-        key={products.product_id}
-      >
-        <div className="lg:w-4/5 mx-auto ">
-          <img
-            alt="ecommerce"
-            className="lg:w-3/4 w-full object-cover object-center rounded border border-gray-400 "
-            src={products.product_image}
-          />
+
+    
+
+
+    return (
+<div className="text-gray-700 body-font overflow-hidden bg-white">
+
+  <div className="container px-5 py-12 mx-auto flex justify-between" key={products.product_id}>
+
+      
+    <div className="lg:w-4/5 mx-auto ">
+      <img alt="ecommerce" className="lg:w-3/4 w-full object-cover object-center rounded border border-gray-400 " src={products.product_image}/>
+      </div>
+        
+        
+      <div className="lg:w-1/2 w-full p-7 mt-6  lg:mt-0 border border-gray-400">
+        <h2 className="text-md title-font text-gray-500 tracking-widest font-medium">{products.product_category}</h2>
+        <h1 className="text-gray-900 text-4xl title-font font-medium text- mb-1 mt-3">{products.product_name}</h1>
+        <div className="flex mb-4">
+
+          <span className="flex items-center">
+     
+
+          
+
+          <span className="text-gray-600 ml-0 mt-3 text-lg font-medium">Stok : {products.product_stock} |</span>
+
+          <span className="text-gray-600 ml-3 mt-3 font-medium">Berat : {products.product_weight} gram |</span>
+
+          <span className="text-gray-600 ml-3 mt-3 font-medium">Asal : {products.product_origin_category}</span>
+
+            <span className="text-gray-600 ml-3"></span>
+          </span>
+
+          
+
         </div>
 
         <div className="lg:w-1/2 w-full p-7 mt-6  lg:mt-0 border border-gray-400">

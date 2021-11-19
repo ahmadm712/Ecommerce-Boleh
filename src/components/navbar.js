@@ -1,11 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo2.png";
 import SearchBar from "./searchBar";
-import CartContext from "../context/cart/cart_context";
+import CartContext from "../data/context/cart/cart_context";
+import { useHistory } from "react-router-dom";
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/solid';
 
 export default function Navbar() {
   const { cartItems, showHideCart } = useContext(CartContext);
+  let user_login = JSON.parse(localStorage.getItem("user-info"));
+  // const history = useHistory();
+  // const handleClick = () => {
+  //   history.push("/search");
+  // };
+
+  function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+const history = useHistory();
+function submit(e){
+    localStorage.removeItem("user-info");
+    history.push("/login");
+  }
+
+
   return (
     <>
       <nav class="bg-primary-200 shadow-lg mb-2 h-16 ">
@@ -23,6 +42,7 @@ export default function Navbar() {
               <SearchBar />
             </div>
             <div class="hidden md:flex items-center space-x-3 h-12">
+            { localStorage.getItem("user-info") !== null &&
               <Link
                 to="/wishlist"
                 class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"
@@ -40,6 +60,8 @@ export default function Navbar() {
                   />
                 </svg>
               </Link>
+               }
+               { localStorage.getItem("user-info") !== null &&
               <Link
                 to="/history_transaction"
                 class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"
@@ -57,57 +79,103 @@ export default function Navbar() {
                   />
                 </svg>
               </Link>
+           }
 
+              
+              { localStorage.getItem("user-info") === null &&
               <Link
                 to="/login"
-                class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-primary-100 hover:text-white transition duration-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                  />
-                </svg>
-              </Link>
-
-              <Link
-                to="/cart"
                 class="py-2 px-2 font-medium text-white bg-primary-100 rounded hover:bg-primary-100 transition duration-300"
               >
-                Keranjang
+                Login
               </Link>
-              <div className="cart__icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  onClick={showHideCart}
+              }
+
+              { localStorage.getItem("user-info") !== null &&
+              
+
+<Menu as="div" className="relative inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                {user_login.name}
+          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+        </Menu.Button>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="/"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                  />
-                </svg>
-                {cartItems.length > 0 && (
-                  <div className="item__count">
-                    <span>{cartItems.length}</span>
-                    <h1></h1>
-                  </div>
+                  <img class="rounded" src={user_login.image} alt="img" width="50" />
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="/profile"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Profile
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="/topup"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Topup
+                </a>
+              )}
+            </Menu.Item>
+            <form onSubmit={(e)=> submit(e)} className="space-y-6">
+        
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    type="submit"
+                    className={classNames(
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full text-left px-4 py-2 text-sm'
+                    )}
+                  >
+                    Log out
+                  </button>
                 )}
-              </div>
+              </Menu.Item>
+            </form>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
+              }
+              
             </div>
+            
 
             <div class="md:hidden flex items-center">
               <button class="outline-none mobile-menu-button">
