@@ -5,6 +5,8 @@ import axios from "axios";
 
 function HistoryTransactionPage() {
   let url = `https://6191168c41928b001768ff36.mockapi.io/api/boleh/transaction_history`;
+  let user_login = JSON.parse(localStorage.getItem("user-info"));
+
   //define state
     const [posts, setPosts] = useState([]);
 
@@ -30,6 +32,8 @@ function HistoryTransactionPage() {
     <div>
       <Navbar />
       { posts.map((post, index) => (
+        <div>
+        { post.user_id == user_login.user_id && 
       <div className="box-content h-full w-3/4 mx-auto border-2 p-4 my-10">
         <div className="flex justify-between">
           <div>
@@ -58,6 +62,8 @@ function HistoryTransactionPage() {
           }
           </div>
         </div>
+      </div>
+    }
       </div>
       )) }
       

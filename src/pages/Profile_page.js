@@ -66,6 +66,8 @@ function ProfilePage() {
       <div className="container-xl">
         <Navbar />
         <br />
+        <div className="container w-full mx-auto">
+        <div className="w-3/6 h-55 relative mx-auto">
         <form onSubmit={(e)=> submit(e)} className="space-y-6">
         
             <div>
@@ -103,6 +105,8 @@ function ProfilePage() {
 
 
         <br />
+        </div>
+        </div>
         <div></div>
 
         <Footer />

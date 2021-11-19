@@ -80,6 +80,8 @@ function TopupPage() {
       <div className="container-xl">
         <Navbar />
         <br />
+        <div className="container w-full mx-auto">
+        <div className="w-3/6 h-55 relative mx-auto">
         <form onSubmit={(e)=> submit(e)} className="space-y-6">
         <div>
               <label htmlFor="" className="text-sm font-bold text-gray-600 block">Saldo</label>
@@ -96,6 +98,9 @@ function TopupPage() {
 
 
         <br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
+        </div>
         <div></div>
 
         <Footer />
