@@ -8,6 +8,7 @@ export default function DetailProduct() {
   const { product } = useContext(ProductContext)
   const { addToCart } = useContext(CardContext)
   
+  
     // console.log(props.match.params);
     // Variable berikut akan menampung product movie yang akan kita tampilkan
     const { id } = useParams();
